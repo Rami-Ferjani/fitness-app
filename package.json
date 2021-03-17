@@ -1,5 +1,5 @@
 {
-  "name": "Fitness",
+  "name": "fitness",
   "version": "1.0.0",
   "description": "Fitness website",
   "main": "server.js",

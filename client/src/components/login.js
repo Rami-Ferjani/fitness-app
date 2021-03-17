@@ -5,7 +5,7 @@ import { useState } from "react";
 const Login = () => {
   return (
     <div className="login-page">
-      <h1>Welcome to Fitness PLanet</h1>
+      <h1>Welcome to Fitness PLanet 255</h1>
       <div className="login">
         <Form>
           <FormGroup>
