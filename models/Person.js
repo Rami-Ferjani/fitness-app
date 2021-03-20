@@ -7,13 +7,14 @@ const PersonSchema=new Schema({
         type:String,
         required:true
     },
-    lastName:{
+    password:{
         type:String,
-        required:true
+        required:true,
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
 });
 module.exports=Person=mongoose.model('person',PersonSchema);
