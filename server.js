@@ -18,16 +18,18 @@ const port = 5000;
 app.listen(port, () => `Server running on port ${port}`);*/
 const express = require("express");
 const mongoose = require("mongoose");
-
+const auth = require("./routes/api/auth.js");
 const persons = require("./routes/api/persons.js");
 const app = express();
 const path = require("path");
+const config = require("config");
 
 //Bodyparser Middleware
 app.use(express.json());
 
 //db config
-const db = require("./config/keys").mongoURI;
+const db = config.get("mongoURI");
+//const db = require("./config/keys").mongoURI;
 
 //Connnect to MOngo
 mongoose
@@ -40,6 +42,7 @@ mongoose
   .catch((err) => console.log(err));
 //use Routes
 app.use("/api/persons", persons);
+app.use("/api/auth", auth);
 //server static assets if in production
 if (process.env.NODE_ENV === "production") {
   // set static folder
