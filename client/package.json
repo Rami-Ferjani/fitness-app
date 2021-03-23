@@ -6,9 +6,12 @@
     "bootstrap": "^4.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^7.2.3",
     "react-scripts": "1.0.17",
     "react-transition-group": "^4.4.1",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.9.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
