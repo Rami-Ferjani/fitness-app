@@ -1,0 +1,13 @@
+login
+user loaded runs with every request in authreducer to see if we're logged in or not
+getState()
+Returns the current state tree of your application. It is equal to the last value returned by the store's reducer.
+x-auth-token tab3a el jwt
+
+where do errors from the surver go?	
+to the state error li tab3a el store
+
+any action u import in componenet you need to add it to the export below
+
+container?
+we put componenet in container which comes from reactstreap bch matsir fazet 5ayb mta3 positionnement

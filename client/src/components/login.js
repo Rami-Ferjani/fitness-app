@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import "../login.css";
 import { useState } from "react";
+import RegisterModal from "./auth/RegisterModal";
+import LoginModal from "./auth/LoginModal";
+import Logout from "./auth/Logout";
 const Login = () => {
   return (
     <div className="login-page">
@@ -27,8 +30,9 @@ const Login = () => {
               placeholder="Password"
             />
           </FormGroup>
-          <Button color="success">Login</Button>{" "}
-          <Button color="info">Sign up</Button>{" "}
+          <Button color="success">Login</Button> <RegisterModal />
+          <LoginModal />
+          <Logout />
         </Form>
       </div>
     </div>
