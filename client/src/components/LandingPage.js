@@ -4,9 +4,10 @@ import "../css/landingPage.css";
 import toggleIcon from "../images/menu.png";
 import mainBanner from "../images/mainbenner.png";
 import fit from "../images/workout.svg";
-
+import RegisterModal from "./auth/RegisterModal";
 //import "../css/bootstrap.min.css";
 //import 'bootstrap/dist/css/bootstrap.min.css';
+import LoginModal from "./auth/LoginModal";
 function LandingPage() {
   return (
     <div>
@@ -53,9 +54,8 @@ function LandingPage() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a href="#" className="nav-link text-primary" href="#">
-                    contact us
-                  </a>
+                <LoginModal />
+                 
                 </li>
               </ul>
             </div>
@@ -68,7 +68,8 @@ function LandingPage() {
             <h2>Team work</h2>
             <h3> Process</h3>
             <p> You set the goal, we take care of the rest</p>
-            <a href="#">Learn more</a>
+            <RegisterModal />
+            
           </div>
           <div className="col-12 col-lg-8">
             <img src={fit} alt="fitness planet banner"></img>
