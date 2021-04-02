@@ -61,6 +61,7 @@ export const register = ({ name, email, password }) => (dispatch) => {
     });
 };
 
+
 //Login User
 export const login = ({ email, password }) => (dispatch) => {
   const config = {
@@ -68,7 +69,7 @@ export const login = ({ email, password }) => (dispatch) => {
       "content-Type": "application/json",
     },
   };
-  //request body
+   //-request body
   const body = JSON.stringify({ email, password });
 
   axios
@@ -88,6 +89,8 @@ export const login = ({ email, password }) => (dispatch) => {
       });
     });
 };
+
+
 //Logout User
 export const logout = () => {
   return {

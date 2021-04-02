@@ -7,6 +7,7 @@ import Login from './components/login';
 import { Provider} from 'react-redux';
 import store from './store';
 import { loadUser } from'./actions/authActions';
+import LandingPage from './components/LandingPage';
 class App extends Component {
   componentDidMount(){
     store.dispatch(loadUser());
@@ -15,8 +16,8 @@ class App extends Component {
     return (
       <Provider store={store}>
       <div className="App">
-        
-        <Login/>
+        <LandingPage/>
+       {/* <Login/>*/}
       </div>
       </Provider>
     );
