@@ -15,6 +15,8 @@ const initialState={
     isLoading:false,
     person:null
 };
+
+export const isAuth=state=>state.isAuthenticated;
 export default function(state=initialState,action){
     switch(action.type){
         case USER_LOADING:
