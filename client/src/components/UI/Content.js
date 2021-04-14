@@ -4,6 +4,7 @@ import { Switch,Route } from "react-router";
 import { Container } from "reactstrap";
 import Topbar from "./Topbar";
 import SideBar from "./SideBar";
+import Profile from "./Content_pages/Profile";
 function Content({ sidebarIsOpen, toggleSidebar }) {
   return (
     <Container
@@ -14,9 +15,9 @@ function Content({ sidebarIsOpen, toggleSidebar }) {
       <Switch>
         <Route exact path="/" component={() => "Hello"} />
         <Route exact path="/about" component={() => "About"} />
-        <Route exact path="/Pages" component={() => "Pages"} />
+        <Route exact path="/Logout" component={() => "Pages"} />
         <Route exact path="/faq" component={() => "FAQ"} />
-        <Route exact path="/contact" component={() => "Contact"} />
+        <Route exact path="/contact" component={() => <Profile/>} />
         <Route exact path="/Home-1" component={() => "Home-1"} />
         <Route exact path="/" component={() => "Home-2"} />
         <Route exact path="/Home-3" component={() => "Home-3"} />

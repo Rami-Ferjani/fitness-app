@@ -5,6 +5,7 @@ import classNames from "classnames";
 //import {Link} from "react-router-dom";
 import "../../css/SideBar.css";
 import Logout from "../auth/Logout";
+import {BsBrightnessHighFill} from "react-icons/bs";
 const SideBar = ({ isOpen, toggle }) => {
   return (
     <div className={classNames("sidebar", { "is-open": isOpen })}>
@@ -32,12 +33,13 @@ const SideBar = ({ isOpen, toggle }) => {
           </NavItem>
           <NavItem>
             <NavLink tag={Link} to={"/contact"}>
-              Contact
+              Profile
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink>
-              <Logout/>
+          <NavItem classname="red">
+            <NavLink  tag={Link} to={"logout"}>
+            <Logout/>
+              
             </NavLink>
           </NavItem>
         </Nav>

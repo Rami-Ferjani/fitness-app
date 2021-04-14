@@ -8,6 +8,9 @@
     height:auto;
     text-align: center;
   }
+  .red:hover{
+      background-color: red;
+  }
   .sidebar.is-open {
     margin-left: 0;
     transition: 0.5s;

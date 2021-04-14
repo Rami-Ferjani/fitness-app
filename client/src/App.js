@@ -13,23 +13,25 @@ import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router } from "react-router-dom";
 
-class App extends Component {
-  componentDidMount() {
-    store.dispatch(loadUser());
-  }
-  render() {
+function App (props) {
+  
+  
+  
+    
     return (
-      <Router>
       <Provider store={store}>
+      <Router>
+      
         <div className="">
           {/*<Dashboard/>*/}
           <LandingPage />
           {/* <Login/>*/}
         </div>
-      </Provider>
+     
       </Router>
+      </Provider>
     );
   }
-}
+
 
 export default App;
