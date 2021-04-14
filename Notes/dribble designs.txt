@@ -26,3 +26,22 @@ https://dribbble.com/shots/12044368-Education-Course-Landingpage
 https://dribbble.com/shots/15301454-Educational-dashboard
 https://dribbble.com/shots/15268795-Learning-platform-Web-app
 https://dribbble.com/shots/8555269-Skolar-Educational-Platform
+
+
+loading probleme
+https://stackoverflow.com/questions/55105326/getting-data-from-api-before-rendering-component-react-redux
+
+sidebar code:
+https://codesandbox.io/s/5ku6t?file=/src/App.css:439-576
+material ui sidebar ish
+https://material-ui.com/components/drawers/
+https://bootstrapious.com/p/app-landing-page
+https://github.com/reduction-admin/react-reduction
+
+sidebar material ui
+https://www.youtube.com/watch?v=5R9jFHlG6ik
+dashboard with ant design
+https://www.youtube.com/watch?v=QkPJV9DonZ0&list=PL6zUqMUkK_dfIfzuhnsq5laMJcJNw9GSe
+
+possible better landing page
+https://www.youtube.com/watch?v=3nLTB_E6XAM

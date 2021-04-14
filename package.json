@@ -20,6 +20,7 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
+    "classnames": "^2.3.1",
     "concurrently": "^3.5.1",
     "config": "^3.3.6",
     "cors": "^2.8.5",
@@ -27,6 +28,7 @@
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.0",
-    "query": "^0.2.0"
+    "query": "^0.2.0",
+    "react-router-dom": "^5.2.0"
   }
 }

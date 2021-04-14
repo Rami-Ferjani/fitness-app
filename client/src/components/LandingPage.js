@@ -20,23 +20,25 @@ import Dashboard from "./Dashboard";
 };*/
 
 function LandingPage(props) {
+  
+  let auth = useSelector((state) => state.auth.isAuthenticated);
   let h2 = "";
   //const auth = useSelector(state=>state.isAuthenticated);
-  let auth = "haja";
+  
   console.log(useSelector((state) => state));
-  auth = useSelector((state) => state.auth.isAuthenticated);
+  
   if (auth) {
     return <Dashboard />;
   } else {
     return (
-      <div>
+      <div className="Landing">
         <div className="container">
           <div className="head my-3">
             <nav className="navbar navbar-expand-lg navbar-light head__custom-nav">
               <a href="" className="navbar-brand d-flex align-items-center">
                 <img src={logo} alt="website logo"></img>
                 <h1></h1>
-                <span> {h2} </span>
+                <span> Planet Fitness </span>
               </a>
               <button
                 className="navbar-toggler"

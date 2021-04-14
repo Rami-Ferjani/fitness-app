@@ -1,22 +1,28 @@
-import React from 'react'
-import { connect,useSelector } from 'react-redux'
+import React,{useState} from "react";
+import { connect, useSelector } from "react-redux";
+import SideBar from "./UI/SideBar";
+import { Nav, NavItem, NavLink } from 'reactstrap';
+import "../css/Dashboard.css";
+import Content from "./UI/Content";
 
 export const Dashboard = (props) => {
-    const state=useSelector(state=>state)
-    return (
-        <div>
-            <h1>Welcom {state.auth.person.name}</h1>
-            <h2>Applogies but the dashboard is under construction</h2>
-        </div>
-    )
-}
-
-const mapStateToProps = (state) => ({
+  const state = useSelector((state) => state);
+  const [sidebarIsOpen, setSidebarOpen] = useState(true);
+  const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
+  return (
+     
+    <div className="App wrapper">
+         <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen}/>
+         <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen}/>
+     
+      
+    </div>
     
-})
+  );
+};
 
-const mapDispatchToProps = {
-    
-}
+const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

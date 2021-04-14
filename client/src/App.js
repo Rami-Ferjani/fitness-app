@@ -10,18 +10,24 @@ import { Provider,useSelector } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authActions";
 import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
+import { BrowserRouter as Router } from "react-router-dom";
+
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
   }
   render() {
     return (
+      <Router>
       <Provider store={store}>
-        <div className="App">
+        <div className="">
+          {/*<Dashboard/>*/}
           <LandingPage />
           {/* <Login/>*/}
         </div>
       </Provider>
+      </Router>
     );
   }
 }
