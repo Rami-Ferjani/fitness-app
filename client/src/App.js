@@ -23,8 +23,8 @@ function App (props) {
       <Router>
       
         <div className="">
-          {/*<Dashboard/>*/}
-          <LandingPage />
+          <Dashboard/>
+          {/*<LandingPage />*/}
           {/* <Login/>*/}
         </div>
      

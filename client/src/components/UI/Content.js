@@ -5,7 +5,10 @@ import { Container } from "reactstrap";
 import Topbar from "./Topbar";
 import SideBar from "./SideBar";
 import Profile from "./Content_pages/Profile";
+import Workout from "./Content_pages/Workout";
 function Content({ sidebarIsOpen, toggleSidebar }) {
+  const paragraph="I am a Paragraph describing  the workout";
+  const day=1;
   return (
     <Container
       fluid
@@ -17,11 +20,11 @@ function Content({ sidebarIsOpen, toggleSidebar }) {
         <Route exact path="/about" component={() => "About"} />
         <Route exact path="/Logout" component={() => "Pages"} />
         <Route exact path="/faq" component={() => "FAQ"} />
-        <Route exact path="/contact" component={() => <Profile/>} />
+        <Route exact path="/contact" component={() => <Profile />} />
         <Route exact path="/Home-1" component={() => "Home-1"} />
         <Route exact path="/" component={() => "Home-2"} />
         <Route exact path="/Home-3" component={() => "Home-3"} />
-        <Route exact path="/Page-1" component={() => "Page-1"} />
+        <Route exact path="/Page-1" component={() => <Workout paragraph={paragraph} day={day}/>} />
         <Route exact path="/Page-2" component={() => "page-2"} />
         <Route exact path="/page-1" component={() => "page-1"} />
         <Route exact path="/page-2" component={() => "page-2"} />

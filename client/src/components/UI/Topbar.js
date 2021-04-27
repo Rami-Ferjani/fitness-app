@@ -28,29 +28,29 @@ function Topbar({toggleSidebar}) {
                 <Nav className="mr-auto nav-center" navbar>
                 <NavItem>
                     <NavLink tag={Link} to={"/Page-1"} >
-                        Page1
+                       Workout
                     </NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink tag={Link} to={"/page-2"}>
-                        Page2
+                        Program
                     </NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink tag={Link} to={"/page-3"}>
-                        Page3
+                        chat
                     </NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink tag={Link} to={"/page-4"}>
-                        Page4
+                        Leaderboard
                     </NavLink>
                    
                 </NavItem>
                 </Nav>
                 
                 <NavbarText>
-                <p>{state.auth.person.name}</p>
+                {/*<p>{state.auth.person.name}</p>*/}
                 </NavbarText>
                 
             </Collapse>
