@@ -15,18 +15,20 @@ import PropTypes from "prop-types";
 import store from "../store";
 import isAuth from "../reducers/authReducer";
 import Dashboard from "./Dashboard";
+
 /*LandingPage.prototype = {
   isAuthenticated: PropTypes.bool,
 };*/
 
 function LandingPage(props) {
-  
-  let auth = useSelector((state) => state.auth.isAuthenticated);
+  let state = useSelector((state) => state);
+  let auth = state.auth.isAuthenticated;
+  let admin;
+  if (auth) admin = state.auth.person.admin;
   let h2 = "";
-  //const auth = useSelector(state=>state.isAuthenticated);
-  
-  console.log(useSelector((state) => state));
-  
+ 
+
+ 
   if (auth) {
     return <Dashboard />;
   } else {

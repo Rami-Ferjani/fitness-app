@@ -31,6 +31,7 @@ router.post("/", (req, res) => {
       name,
       email,
       password,
+      admin:false,
     });
 
     //Create salt n hash to has passwors
@@ -55,6 +56,7 @@ router.post("/", (req, res) => {
                   id: person.id,
                   name: person.name,
                   email: person.email,
+                  admin:person.admin,
                 },
               });
             }

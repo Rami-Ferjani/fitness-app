@@ -21,10 +21,10 @@ function Workout(props) {
       <h1>Welcom to day {props.day}</h1>
       <div className="second">
         <p className="paragraph">{props.paragraph}</p>
-
-        <ul>
+        <p>( press on workout name to reveal the coresponding video)</p>
+        <ul className="work">
           {all.map((element,i) => (
-            <li
+            <li className="work1"
               onClick={() => {
                 setcurrentLink(links[i]);
               }}

@@ -16,5 +16,9 @@ const PersonSchema=new Schema({
         required:true,
         unique:true
     },
+    admin:{
+        type:Boolean,
+        required:true
+    }
 });
 module.exports=Person=mongoose.model('person',PersonSchema);

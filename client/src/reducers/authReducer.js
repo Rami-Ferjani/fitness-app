@@ -13,7 +13,8 @@ const initialState={
     token:localStorage.getItem('token'),
     isAuthenticated:null,
     isLoading:false,
-    person:null
+    person:null,
+    
 };
 
 export const isAuth=state=>state.isAuthenticated;

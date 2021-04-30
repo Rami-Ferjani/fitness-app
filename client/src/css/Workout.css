@@ -7,6 +7,17 @@ h1 {
     left:40px;
     
 }*/
+.work {
+    margin-left: 0px;
+}
+.work1:hover{
+    cursor:pointer;
+    color:rgb(68, 143, 230);
+
+
+    
+    background-color:white;
+}
 .second{
     margin-left: 120px;
     margin-top: 100px;

@@ -12,6 +12,7 @@ import { loadUser } from "./actions/authActions";
 import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router } from "react-router-dom";
+import CreateWorkout from "./components/UI/Content_pages/CreateWorkout";
 
 function App (props) {
   
@@ -23,7 +24,8 @@ function App (props) {
       <Router>
       
         <div className="">
-          <Dashboard/>
+          
+          {<Dashboard/>}
           {/*<LandingPage />*/}
           {/* <Login/>*/}
         </div>
