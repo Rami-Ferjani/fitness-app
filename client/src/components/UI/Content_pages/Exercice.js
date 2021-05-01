@@ -1,10 +1,11 @@
-import React from "react";
-import { Button,Input,Form,FormGroup } from "reactstrap";
-
-function smWorkout() {
-  return (
-    <Form>
-      <FormGroup>
+import React from 'react'
+import {Form,FormGroup,Input,Button} from "reactstrap"
+import "../../../css/Exercice.css"
+function Exercice() {
+    return (
+        <div >
+             <Form>
+      <FormGroup className="exercice">
         <Input
           type="text"
           name="name"
@@ -23,11 +24,17 @@ function smWorkout() {
           id="reps"
           placeholder="Reps"
         />
+        <Input
+          type="text"
+          name="link"
+          id="link"
+          placeholder="Video Link"
+        />
         <Button color="primary">Add</Button>
       </FormGroup>
-      </Form>
-   
-  );
+    </Form>
+        </div>
+    )
 }
 
-export default smWorkout;
+export default Exercice

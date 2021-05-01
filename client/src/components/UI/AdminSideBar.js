@@ -24,7 +24,7 @@ const AdminSideBar = ({ isOpen, toggle }) => {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>Portfolio</NavLink>
+            <NavLink>Manage workout</NavLink>
           </NavItem>
           <NavItem>
             <NavLink tag={Link} to={"faq"}>

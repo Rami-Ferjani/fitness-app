@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import smWorkout from "./smWorkout";
-import sw from "./sw";
-const CreateWorkout = (props) => {
+import Exercice from "./Exercice";
+
+function CreateWorkout (props)  {
   return (
+    
       <div>
     <Form>
       <FormGroup>
@@ -14,18 +15,14 @@ const CreateWorkout = (props) => {
           id="exampleEmail"
         />
         
-        <smWorkout/>
+        
       </FormGroup>
       <smWorkout/>
       <FormGroup>
         <Label for="exampleSelect">Select</Label>
-        <Input type="select" name="select" id="exampleSelect">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </Input>
+        <Input type="text" name="duration" id="duration" placeholder="Duration of the workout"/>
+        
+      
       </FormGroup>
      
       <FormGroup>
@@ -34,11 +31,12 @@ const CreateWorkout = (props) => {
       </FormGroup>
       
 
+      
+      <Exercice/>
       <Button>Submit</Button>
     </Form>
-    <smWorkout/>
-    <sw/>
-    <p>hhhhh</p>
+   
+   
     </div>
   );
 };
