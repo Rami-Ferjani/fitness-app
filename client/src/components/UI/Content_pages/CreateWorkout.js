@@ -38,8 +38,7 @@ function CreateWorkout(props) {
 
           <FormGroup>
             <Label for="exampleSelect">Duration</Label>
-            <input
-              class="form-control"
+            <Input
               type="text"
               name="duration"
               id="duration"
@@ -70,9 +69,10 @@ function CreateWorkout(props) {
       <div>
         <h3>Phase 2</h3>
         {days.map((day) => {
-          return <Day day={day} />;
+          return <Day day={day} key={day} />;
         })}
         <Button onClick={() => setPhase(1)}>Back</Button>
+        <Button color="success">Submit</Button>
       </div>
     );
   }
