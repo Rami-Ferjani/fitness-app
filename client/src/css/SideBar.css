@@ -7,6 +7,7 @@
     transition: all 0.5s;
     height:auto;
     text-align: center;
+    
   }
   .red:hover{
       background-color: red;

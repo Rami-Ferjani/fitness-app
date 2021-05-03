@@ -62,9 +62,16 @@ function CreateWorkout(props) {
 
           <Button onClick={() => setPhase(2)}>Next</Button>
         </Form>
+        <div>
+          {days.map((day) => {
+            return <Day day={day} key={day} />;
+          })}
+          <Button onClick={() => setPhase(1)}>Back</Button>
+          <Button color="success">Submit</Button>
+        </div>
       </div>
     );
-  } else if (phase == 2) {
+  } /*else if (phase == 2) {
     return (
       <div>
         <h3>Phase 2</h3>
@@ -75,8 +82,7 @@ function CreateWorkout(props) {
         <Button color="success">Submit</Button>
       </div>
     );
-  }
-  console.log(days);
+  }*/
 }
 
 export default CreateWorkout;
