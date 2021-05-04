@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import "../../../css/Exercice.css";
-function Exercice() {
+function Exercice(props) {
   const [saved, setSaved] = useState(false);
   const [Name, setName] = useState("");
   const [Sets, setSets] = useState("");
   const [Reps, setReps] = useState("");
   const [Link, setLink] = useState("");
+  useEffect(() => {
+    setSaved(props.edit);
+  }, [props.edit]);
   if (!saved) {
     return (
       <div>
