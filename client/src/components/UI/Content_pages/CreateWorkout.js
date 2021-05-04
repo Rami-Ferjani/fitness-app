@@ -2,11 +2,23 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import Exercice from "./Exercice";
 import Day from "./Day";
+import { createWorkout } from "../../../actions/workoutActions";
+import { useDispatch } from 'react-redux';
+import { CREATE_WORKOUT } from "../../../actions/types";
 function CreateWorkout(props) {
   const [duration, setDuration] = useState("");
   const [phase, setPhase] = useState(1);
   const [WorkoutName, setWorkoutName] = useState("");
   const [Paragraph, setParagraph] = useState("");
+  const [workout, setWorkout] = useState({});
+  const dispatch=useDispatch();
+  const submit = () => {
+    dispatch({
+      type:CREATE_WORKOUT,
+    })
+    /*setWorkout({ name: WorkoutName });
+    createWorkout(workout);*/
+  };
   let numOfDays = parseInt(duration);
   console.log(numOfDays);
   let days = [];
@@ -59,15 +71,20 @@ function CreateWorkout(props) {
               value={Paragraph}
             />
           </FormGroup>
-
-          <Button onClick={() => setPhase(2)}>Next</Button>
         </Form>
         <div>
           {days.map((day) => {
             return <Day day={day} key={day} />;
           })}
-          <Button onClick={() => setPhase(1)}>Back</Button>
-          <Button color="success">Submit</Button>
+
+          <Button
+            color="success"
+            onClick={() => {
+              submit();
+            }}
+          >
+            Submit
+          </Button>
         </div>
       </div>
     );
