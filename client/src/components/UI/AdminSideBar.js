@@ -36,7 +36,7 @@ const AdminSideBar = ({ isOpen, toggle }) => {
               Profile
             </NavLink>
           </NavItem>
-          <NavItem classname="red">
+          <NavItem className="red">
             <NavLink  tag={Link} to={"logout"}>
             <Logout/>
               

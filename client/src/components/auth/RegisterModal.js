@@ -8,14 +8,13 @@ import {
   FormGroup,
   Label,
   Input,
-  NavLink,
   Alert,
 } from "reactstrap";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../../actions/authActions";
-import {clearErrors} from '../../actions/errorActions'
+import { clearErrors } from "../../actions/errorActions";
 class RegisterModal extends Component {
   state = {
     modal: false,
@@ -28,11 +27,11 @@ class RegisterModal extends Component {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
-    clearErrors:PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
   };
 
   componentDidUpdate(prevProps) {
-    const { error,isAuthenticated } = this.props;
+    const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
       //check for register error
       if (error.id === "REGISTER_FAIL") {
@@ -43,15 +42,15 @@ class RegisterModal extends Component {
     }
 
     // if authenticated, close modal
-    if(this.state.modal) {
-        if(isAuthenticated){
-            this.toggle()
-        }
+    if (this.state.modal) {
+      if (isAuthenticated) {
+        this.toggle();
+      }
     }
   }
   toggle = () => {
-     //clear erros bch mayg3odch el error
-     this.props.clearErrors();
+    //clear erros bch mayg3odch el error
+    this.props.clearErrors();
     this.setState({
       modal: !this.state.modal,
     });
@@ -133,4 +132,6 @@ const mapStateToProps = (state) => ({
   //the auth and error  we're getting form the reducer
 });
 
-export default connect(mapStateToProps, { register,clearErrors })(RegisterModal);
+export default connect(mapStateToProps, { register, clearErrors })(
+  RegisterModal
+);

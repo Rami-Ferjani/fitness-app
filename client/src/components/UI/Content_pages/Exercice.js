@@ -7,9 +7,13 @@ function Exercice(props) {
   const [Sets, setSets] = useState("");
   const [Reps, setReps] = useState("");
   const [Link, setLink] = useState("");
-  useEffect(() => {
+  const handleClick = () => {
+    setSaved(true);
+    props.AddExercice(Name,Sets,Reps,Link);
+  };
+  /*useEffect(() => {
     setSaved(props.edit);
-  }, [props.edit]);
+  }, [props.edit]);*/
   if (!saved) {
     return (
       <div>
@@ -55,7 +59,7 @@ function Exercice(props) {
                 setLink(event.target.value);
               }}
             />
-            <Button color="success" onClick={() => setSaved(true)}>
+            <Button color="success" onClick={() => handleClick()}>
               Save
             </Button>
           </FormGroup>

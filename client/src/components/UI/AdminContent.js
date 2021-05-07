@@ -3,7 +3,7 @@ import React from "react";
 import { Switch,Route } from "react-router";
 import { Container } from "reactstrap";
 import Topbar from "./Topbar";
-import AdminSideBar from "./AdminSideBar";
+
 import Profile from "./Content_pages/Profile";
 import Workout from "./Content_pages/Workout";
 function AdminContent({ sidebarIsOpen, toggleSidebar }) {

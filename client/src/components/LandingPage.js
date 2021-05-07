@@ -8,12 +8,10 @@ import RegisterModal from "./auth/RegisterModal";
 //import "../css/bootstrap.min.css";
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginModal from "./auth/LoginModal";
-import Logout from "./auth/Logout";
+
 //import {store} from "../store";
 import { connect, useSelector } from "react-redux";
-import PropTypes from "prop-types";
-import store from "../store";
-import isAuth from "../reducers/authReducer";
+
 import Dashboard from "./Dashboard";
 
 /*LandingPage.prototype = {
@@ -26,9 +24,7 @@ function LandingPage(props) {
   let admin;
   if (auth) admin = state.auth.person.admin;
   let h2 = "";
- 
 
- 
   if (auth) {
     return <Dashboard />;
   } else {

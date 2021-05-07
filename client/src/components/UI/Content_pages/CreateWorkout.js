@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import Exercice from "./Exercice";
+
 import Day from "./Day";
 import { createWorkout } from "../../../actions/workoutActions";
 import { useDispatch } from 'react-redux';

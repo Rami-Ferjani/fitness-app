@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../../../css/Workout.css";
 import Task from "./Task";
-import { Router, Route } from "react-router-dom";
-import YoutubePlayer from "reactjs-media";
+
+
 import ReactPlayer from "react-player";
 
 function Workout(props) {
