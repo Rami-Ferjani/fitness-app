@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 import Day from "./Day";
 import { createWorkout } from "../../../actions/workoutActions";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { CREATE_WORKOUT } from "../../../actions/types";
 function CreateWorkout(props) {
   const [duration, setDuration] = useState("");
@@ -11,24 +11,26 @@ function CreateWorkout(props) {
   const [WorkoutName, setWorkoutName] = useState("");
   const [Paragraph, setParagraph] = useState("");
   const [workout, setWorkout] = useState({});
-  const dispatch=useDispatch();
+  const [daysDB, setDaysDB] = useState([]);
+  const dispatch = useDispatch();
+  const AddDay = (day, ExercicesDB) => {
+    console.log(day, ExercicesDB);
+  };
   const submit = () => {
     dispatch({
-      type:CREATE_WORKOUT,
-    })
+      type: CREATE_WORKOUT,
+    });
     /*setWorkout({ name: WorkoutName });
     createWorkout(workout);*/
   };
   let numOfDays = parseInt(duration);
-  console.log(numOfDays);
+
   let days = [];
   for (let i = 0; i < numOfDays; i++) {
     days[i] = i + 1;
   }
-  console.log(days);
-  useEffect(() => {
-    console.log("im running");
-  });
+
+  useEffect(() => {});
 
   if (phase == 1) {
     return (
@@ -74,7 +76,7 @@ function CreateWorkout(props) {
         </Form>
         <div>
           {days.map((day) => {
-            return <Day day={day} key={day} />;
+            return <Day day={day} key={day} AddDay={AddDay} />;
           })}
 
           <Button
