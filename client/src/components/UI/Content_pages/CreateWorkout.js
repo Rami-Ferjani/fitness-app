@@ -13,8 +13,13 @@ function CreateWorkout(props) {
   const [workout, setWorkout] = useState({});
   const [daysDB, setDaysDB] = useState([]);
   const dispatch = useDispatch();
+
   const AddDay = (day, ExercicesDB) => {
+    let obj = daysDB;
+    obj[day] = ExercicesDB;
+    setDaysDB(obj);
     console.log(day, ExercicesDB);
+    console.log(daysDB);
   };
   const submit = () => {
     dispatch({
