@@ -5,11 +5,12 @@ import Day from "./Day";
 import { createWorkout } from "../../../actions/workoutActions";
 import { useDispatch } from "react-redux";
 import { CREATE_WORKOUT } from "../../../actions/types";
+import axios from "axios";
 function CreateWorkout(props) {
   const [duration, setDuration] = useState("");
   const [phase, setPhase] = useState(1);
   const [WorkoutName, setWorkoutName] = useState("");
-  const [Paragraph, setParagraph] = useState("");
+  const [Description, setDescription] = useState("");
   const [workout, setWorkout] = useState({});
   const [daysDB, setDaysDB] = useState([]);
   const dispatch = useDispatch();
@@ -22,9 +23,14 @@ function CreateWorkout(props) {
     console.log(daysDB);
   };
   const submit = () => {
-    dispatch({
-      type: CREATE_WORKOUT,
-    });
+    const config = {
+      headers: {
+        "content-Type": "application/json",
+      },
+    };
+
+    const body=JSON.stringify({WorkoutName,Description})
+    axios.post("/api/workout")
     /*setWorkout({ name: WorkoutName });
     createWorkout(workout);*/
   };
@@ -80,9 +86,9 @@ function CreateWorkout(props) {
               name="text"
               id="exampleText"
               onChange={(event) => {
-                setParagraph(event.target.value);
+                setDescription(event.target.value);
               }}
-              value={Paragraph}
+              value={Description}
             />
           </FormGroup>
         </Form>

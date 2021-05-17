@@ -2,10 +2,10 @@ const mongoose=require('mongoose');
 
 const Schema=mongoose.Schema;
 
-export const workoutSchema=new Schema({
+ const workoutSchema=new Schema({
     name:{
         type:String,
-        required:true
+        required:true,
     },
     description:{
         type:String,
@@ -17,4 +17,4 @@ export const workoutSchema=new Schema({
     }
 });
 
-//module.exports=Workout=mongoose.model('workout',workoutSchema);
+module.exports=Workout=mongoose.model('Workout',workoutSchema);

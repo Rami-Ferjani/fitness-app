@@ -23,7 +23,7 @@ const persons = require("./routes/api/persons.js");
 const app = express();
 const path = require("path");
 const config = require("config");
-
+const workout = require("./routes/api/workout.js");
 //Bodyparser Middleware
 app.use(express.json());
 
@@ -40,9 +40,13 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected ..."))
   .catch((err) => console.log(err));
+
 //use Routes
+
 app.use("/api/persons", persons);
 app.use("/api/auth", auth);
+app.use("/api/workout", workout);
+
 //server static assets if in production
 if (process.env.NODE_ENV === "production") {
   // set static folder
