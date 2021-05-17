@@ -34,6 +34,13 @@ function CreateWorkout(props) {
   for (let i = 0; i < numOfDays; i++) {
     days[i] = i + 1;
   }
+  function renderDays(day){
+    return Object.entries(day).map(([key,value],i)=>{
+      return (
+        <div key={key}></div>
+      )
+    })
+  }
 
   useEffect(() => {});
 
@@ -81,9 +88,11 @@ function CreateWorkout(props) {
         </Form>
         <div>
           {days.map((day) => {
-            return <Day day={day} key={day} AddDay={AddDay} />;
+            return (
+              <Day day={day} key={day} AddDay={AddDay} value={daysDB[day]} />
+            );
           })}
-
+          {/*<Button onClick={() => setPhase(2)}>Next</Button>*/}
           <Button
             color="success"
             onClick={() => {
@@ -99,8 +108,8 @@ function CreateWorkout(props) {
     return (
       <div>
         <h3>Phase 2</h3>
-        {days.map((day) => {
-          return <Day day={day} key={day} />;
+        {daysDB.map((day, i) => {
+          return <p>{day}</p>;
         })}
         <Button onClick={() => setPhase(1)}>Back</Button>
         <Button color="success">Submit</Button>
