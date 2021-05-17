@@ -8,8 +8,8 @@ const auth = require("../../middleware/auth");
 const Workout = require("../../models/Workout");
 
 router.post("/", (req, res) => {
-  const { name, days,description } = req.body;
- 
+  const { name, days, Description } = req.body;
+
   const newWorkout = new Workout(req.body);
   newWorkout.save((err, Workout) => {
     if (err) {

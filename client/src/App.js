@@ -25,8 +25,8 @@ function App (props) {
       
         <div className="">
           
-          {<Dashboard/>}
-          {/*<LandingPage />*/}
+          {/*<Dashboard/*/}
+          {<LandingPage />}
           {/* <Login/>*/}
         </div>
      

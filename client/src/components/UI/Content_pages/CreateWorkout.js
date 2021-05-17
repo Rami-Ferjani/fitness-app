@@ -29,10 +29,13 @@ function CreateWorkout(props) {
       },
     };
 
-    const body=JSON.stringify({WorkoutName,Description})
-    axios.post("/api/workout")
-    /*setWorkout({ name: WorkoutName });
-    createWorkout(workout);*/
+    const body = JSON.stringify({ WorkoutName, Description, daysDB });
+    axios
+      .post("/api/workout", body, config)
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err);
+      });
   };
   let numOfDays = parseInt(duration);
 
@@ -40,12 +43,10 @@ function CreateWorkout(props) {
   for (let i = 0; i < numOfDays; i++) {
     days[i] = i + 1;
   }
-  function renderDays(day){
-    return Object.entries(day).map(([key,value],i)=>{
-      return (
-        <div key={key}></div>
-      )
-    })
+  function renderDays(day) {
+    return Object.entries(day).map(([key, value], i) => {
+      return <div key={key}></div>;
+    });
   }
 
   useEffect(() => {});

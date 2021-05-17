@@ -19,6 +19,10 @@ const PersonSchema=new Schema({
     admin:{
         type:Boolean,
         required:true
+    },
+    workout :{
+        type:String,
+        default:null,
     }
 });
 module.exports=Person=mongoose.model('person',PersonSchema);
