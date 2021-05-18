@@ -23,6 +23,10 @@ const PersonSchema=new Schema({
     workout :{
         type:String,
         default:null,
+    },
+    day:{
+        type:Number,
+        default:0,
     }
 });
 module.exports=Person=mongoose.model('person',PersonSchema);

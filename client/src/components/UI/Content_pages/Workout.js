@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../css/Workout.css";
 import Task from "./Task";
 
-
 import ReactPlayer from "react-player";
-
+import axios from "axios";
 function Workout(props) {
+  useEffect(() => {
+  
+
+  });
   const rep1 = { pushUp: "10", chinUp: "50", pullup: "100" };
 
   const [currentLink, setcurrentLink] = useState(
@@ -15,7 +18,11 @@ function Workout(props) {
   const all = Object.entries(rep1);
   console.log(all);
   let i = 0;
- let links=["https://www.youtube.com/watch?v=IODxDxX7oi4","https://www.youtube.com/watch?v=dYDJpuDiJGc","https://www.youtube.com/watch?v=eGo4IYlbE5g"]
+  let links = [
+    "https://www.youtube.com/watch?v=IODxDxX7oi4",
+    "https://www.youtube.com/watch?v=dYDJpuDiJGc",
+    "https://www.youtube.com/watch?v=eGo4IYlbE5g",
+  ];
   return (
     <div>
       <h1>Welcom to day {props.day}</h1>
@@ -23,8 +30,9 @@ function Workout(props) {
         <p className="paragraph">{props.paragraph}</p>
         <p>( press on workout name to reveal the coresponding video)</p>
         <ul className="work">
-          {all.map((element,i) => (
-            <li className="work1"
+          {all.map((element, i) => (
+            <li
+              className="work1"
               onClick={() => {
                 setcurrentLink(links[i]);
               }}
