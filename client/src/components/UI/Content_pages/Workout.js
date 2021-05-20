@@ -4,19 +4,37 @@ import Task from "./Task";
 
 import ReactPlayer from "react-player";
 import axios from "axios";
+import { useSelector } from "react-redux";
 function Workout(props) {
-  useEffect(() => {
-  
+  const state = useSelector((state) => state);
+  const workoutName = state.auth.person.workout;
+  const day = state.auth.person.day;
+  const workoutData = state.workout.payload.daysDB;
+  const currentWorkout = workoutData[day];
+  console.log(`i am the data :${workoutData}`);
+  const [paragraph, setParagraph] = useState("");
+  const [everything, setEverything] = useState([]);
+  /*useEffect(() => {
+    axios.get(`/api/workout/${workoutName}`).then((res) => {
+      workoutData = res.data;
+      setParagraph(workoutData.Description);
+      setEverything(workoutData.daysDB);
 
-  });
-  const rep1 = { pushUp: "10", chinUp: "50", pullup: "100" };
-
+      console.log(workoutData);
+    });
+  });*/
+  const rep1 = {
+    pushUp: "10X5",
+    chinUp: "50",
+    pullup: "100",
+    diamon: "50",
+    flower: "100",
+  };
+  const all = Object.entries(rep1);
   const [currentLink, setcurrentLink] = useState(
     "https://youtu.be/cij0pxAK9w0"
   );
 
-  const all = Object.entries(rep1);
-  console.log(all);
   let i = 0;
   let links = [
     "https://www.youtube.com/watch?v=IODxDxX7oi4",
@@ -27,20 +45,20 @@ function Workout(props) {
     <div>
       <h1>Welcom to day {props.day}</h1>
       <div className="second">
-        <p className="paragraph">{props.paragraph}</p>
+        <p className="paragraph">{paragraph}</p>
         <p>( press on workout name to reveal the coresponding video)</p>
         <ul className="work">
-          {all.map((element, i) => (
+          {currentWorkout.map((element) => (
             <li
               className="work1"
               onClick={() => {
-                setcurrentLink(links[i]);
+                setcurrentLink(element.Link);
               }}
             >
               {
                 <Task
-                  exercice={[element[0]]}
-                  value={element[1]}
+                  exercice={element.name}
+                  value={element.Sets}
                   onClick={() => {
                     console.log("ramiiiiiiiiiiiii");
                   }}

@@ -9,6 +9,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  WORKOUT_LOADED,
 } from "./types";
 
 //check token and load user
@@ -19,10 +20,16 @@ export const loadUser = () => (dispatch, getState) => {
   axios
     .get("/api/auth/person", tokenConfig(getState))
     .then((res) =>
+    {axios.get(`/api/workout/${res.data.name}`).then((response)=>{
+      dispatch({
+        type: WORKOUT_LOADED,
+        payload:response.data,
+      })
+    });
       dispatch({
         type: USER_LOADED,
         payload: res.data,
-      })
+      })}
     )
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
@@ -30,6 +37,8 @@ export const loadUser = () => (dispatch, getState) => {
         type: AUTH_ERROR,
       });
     });
+   
+
 };
 
 //Register user
@@ -75,11 +84,16 @@ export const login = ({ email, password }) => (dispatch) => {
   axios
     .post("/api/auth", body, config)
     .then((res) =>
-      dispatch({
+      {axios.get(`/api/workout/${res.data.person.workout}`).then((response)=>{
+        dispatch({
+          type: WORKOUT_LOADED,
+          payload:response.data,
+        });
+        dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
-      })
-    )
+      })}
+    )})
     .catch((err) => {
       dispatch(
         returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")

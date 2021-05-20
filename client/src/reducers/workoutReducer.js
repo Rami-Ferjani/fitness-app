@@ -1,12 +1,12 @@
-import { CREATE_WORKOUT } from "../actions/types";
+import { CREATE_WORKOUT, WORKOUT_LOADED } from "../actions/types";
 import { ADD_DAY } from "../actions/types";
 const initialState = {
-  description: {},
+  Description: {},
 };
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case ADD_DAY: {
+    case WORKOUT_LOADED: {
       return {
         ...state,
         payload,
