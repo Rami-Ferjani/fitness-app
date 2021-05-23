@@ -1,13 +1,14 @@
-  const { json } = require("body-parser");
-  const express = require("express");
-  const router = express.Router();
-  const bcrypt = require("bcryptjs");
-  const config = require("config");
-  const jwt = require("jsonwebtoken");
-  const auth=require('../../middleware/auth')
+const { json } = require("body-parser");
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcryptjs");
+const config = require("config");
+const jwt = require("jsonwebtoken");
+const auth = require("../../middleware/auth");
 
 //user Model
 const person = require("../../models/Person");
+const ChatModel = require("../../models/ChatModel");
 
 //@route    POST api/persons
 //@des       register new user
@@ -15,7 +16,7 @@ const person = require("../../models/Person");
 
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;
-
+  await new ChatModel({ user: user._id, chats: [] }).save();
   //simple validation
   if (!name || !email || !password) {
     return res.status(400).json({ msg: "please enter all fields" });
@@ -31,7 +32,7 @@ router.post("/", (req, res) => {
       name,
       email,
       password,
-      admin:false,
+      admin: false,
     });
 
     //Create salt n hash to has passwors
@@ -49,19 +50,18 @@ router.post("/", (req, res) => {
             (err, token) => {
               if (err) throw err;
               //lhna el reponse mta3 el authentithication
-              
+
               res.json({
                 token,
                 person: {
                   id: person.id,
                   name: person.name,
                   email: person.email,
-                  admin:person.admin,
+                  admin: person.admin,
                 },
               });
             }
           );
-         
         });
       });
     });
