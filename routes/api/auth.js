@@ -8,6 +8,7 @@ const auth = require("../../middleware/auth");
 
 //user Model
 const person = require("../../models/Person");
+const ChatModel = require("../../models/ChatModel");
 
 //@route    POST api/auth
 //@des       Authenticatite  the user
@@ -29,6 +30,10 @@ router.post("/", (req, res) => {
     //validate password
     bcrypt.compare(password, person.password).then((isMatch) => {
       if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
+      /*const chatModel = ChatModel.findOne({ user: person.id });
+      if (!chatModel) {
+        new ChatModel({ user: person._id, chats: [] }).save();
+      }*/
 
       jwt.sign(
         { id: person.id },

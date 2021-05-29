@@ -7,6 +7,8 @@ import SideBar from "./SideBar";
 import Profile from "./Content_pages/Profile";
 import Workout from "./Content_pages/Workout";
 import CreateWorkout from "./Content_pages/CreateWorkout";
+import Messenger from "./Content_pages/Messenger";
+
 function Content({ sidebarIsOpen, toggleSidebar }) {
   const paragraph = "I am a Paragraph describing  the workout";
   const day = 1;
@@ -34,10 +36,14 @@ function Content({ sidebarIsOpen, toggleSidebar }) {
         <Route exact path="/Page-2" component={() => "page-2"} />
         <Route exact path="/page-1" component={() => "page-1"} />
         <Route exact path="/page-2" component={() => "page-2"} />
-        <Route exact path="/page-3" component={() => "page-3"} />
+        <Route exact path="/page-3" component={() => <Messenger/>} />
         <Route exact path="/page-4" component={() => "page-4"} />
         {/* Admin Router}*/}
-        <Route exact path="/createWorkout" component={() => <CreateWorkout/>} />
+        <Route
+          exact
+          path="/createWorkout"
+          component={() => <CreateWorkout />}
+        />
       </Switch>
     </Container>
   );

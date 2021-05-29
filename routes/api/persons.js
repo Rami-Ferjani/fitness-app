@@ -16,7 +16,7 @@ const ChatModel = require("../../models/ChatModel");
 
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;
-  await new ChatModel({ user: user._id, chats: [] }).save();
+
   //simple validation
   if (!name || !email || !password) {
     return res.status(400).json({ msg: "please enter all fields" });
@@ -41,6 +41,7 @@ router.post("/", (req, res) => {
         if (err) throw err;
         newPerson.password = hash;
         newPerson.save().then((person) => {
+          new ChatModel({ user: newPerson._id, chats: [] }).save();
           jwt.sign(
             { id: person.id },
             config.get("jwtSecret"),

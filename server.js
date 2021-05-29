@@ -24,6 +24,7 @@ const app = express();
 const path = require("path");
 const config = require("config");
 const workout = require("./routes/api/workout.js");
+const chat = require("./routes/api/Chats.js");
 //Bodyparser Middleware
 app.use(express.json());
 
@@ -46,6 +47,7 @@ mongoose
 app.use("/api/persons", persons);
 app.use("/api/auth", auth);
 app.use("/api/workout", workout);
+app.use("/api/chats", chat);
 
 //server static assets if in production
 if (process.env.NODE_ENV === "production") {
