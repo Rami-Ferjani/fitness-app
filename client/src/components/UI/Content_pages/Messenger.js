@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../css/Messenger.css";
 import Conversation from "../Conversation";
+import Message from "../Message";
 function Messenger() {
   return (
     <div className="messenger">
@@ -15,8 +16,24 @@ function Messenger() {
       </div>
       <div className="chatBox">
         <div className="chatBoxWrapper">
-          <div className="chatBoxTop"></div>
-          <div className="chatBoxTop"></div>
+          <div className="chatBoxTop">
+            <Message />
+            <Message own={true} />
+            <Message />
+            <Message />
+            <Message own={true} />
+            <Message />
+            <Message />
+            <Message own={true} />
+            <Message />
+            <Message />
+            <Message own={true} />
+            <Message />
+          </div>
+          <div className="chatBoxBottom">
+              <textarea className="chatMessageInput" placeholder="write something..."></textarea>
+              <button className="chatSubmitButton">Send</button>
+          </div>
         </div>
       </div>
       <div className="chatOnline">

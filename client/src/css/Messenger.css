@@ -18,6 +18,37 @@
 .chatOnline{
     flex:3;
 }
+.chatBoxTop{
+    background: black;
+    height:10%;
+    overflow-y: scroll;
+}
+.chatBoxBottom{
+    margin-top: 5px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.chatMessageInput{
+    width:80%;
+    height:9px;
+    padding:10px;
+}
+.chatSubmitButton{
+    width:70px;
+    height:40px;
+    border:none;
+    cursor:pointer;
+    background-color: teal;
+    color:white;
+}
+
+.chatBoxWrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 
 .chatMenuWrapper,.chatBoxWrapper,.chatOnlineWrapper{
     padding:10px;
