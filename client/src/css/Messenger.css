@@ -19,8 +19,8 @@
     flex:3;
 }
 .chatBoxTop{
-    background: black;
-    height:10%;
+    padding-right: 10px;
+    height:100%;
     overflow-y: scroll;
 }
 .chatBoxBottom{
@@ -53,5 +53,5 @@
 .chatMenuWrapper,.chatBoxWrapper,.chatOnlineWrapper{
     padding:10px;
    
-    height: 100%;
+    
 }
