@@ -47,6 +47,7 @@
     display:flex;
     flex-direction: column;
     justify-content: space-between;
+    position:relative;
 }
 
 
@@ -54,4 +55,12 @@
     padding:10px;
    
     
+}
+.noConversationText{
+    position:absolute;
+    top: 10%;
+    font-size: 50px;
+    color:rgb(224,220,220);
+    text-decoration: center;
+    cursor: default;
 }

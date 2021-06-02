@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../../../css/Messenger.css";
 import ChatOnline from "../ChatOnline";
 import Conversation from "../Conversation";
@@ -7,31 +7,41 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 function Messenger() {
   const state = useSelector((state) => state);
-  const [conversations,setConversations]=useState([]);
-  const id=state.auth.person.id;
-  console.log(id);
-  useEffect(async()=>{
-
-    const getConversations=async ()=>{
-      console.log("i've started");
-      const res=await axios.get("/api/conversations/"+id);
-      console.log("im workiing");
-      console.log(res);
-    }
-  },[id]);
+  const [Conversations, setConversations] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const id = state.auth.person.id;
+  const User = state.auth.person;
+  
+  useEffect(() => {
+    const getConversations = () => {
+      axios
+        .get("/api/conversations/" + id)
+        .then((res) => {
+          setConversations(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getConversations();
+    
+  }, [id]);
   return (
     <div className="messenger">
       <div className="chatMenu">
         <div className="chatMenuWrapper">
           <input placeholder="search for friends" className="chatMenuUnput" />
-          <Conversation />
-          <Conversation />
-          <Conversation />
-          <Conversation />
+          {Conversations.map((conversation) => {
+            return <Conversation conversation={conversation} currentUser={User} />;
+          })}
         </div>
       </div>
       <div className="chatBox">
         <div className="chatBoxWrapper">
+          {
+            currentChat?
+          <>
           <div className="chatBoxTop">
             <Message />
             <Message own={true} />
@@ -52,7 +62,7 @@ function Messenger() {
               placeholder="write something..."
             ></textarea>
             <button className="chatSubmitButton">Send</button>
-          </div>
+          </div></> : <span className="noConversationText">Open a conversation  to start a chat</span>}
         </div>
       </div>
       <div className="chatOnline">
