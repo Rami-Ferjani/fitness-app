@@ -69,17 +69,18 @@ router.post("/", (req, res) => {
   });
 });
 
-//@route  POST api/persons
-//@des    Get  all persons
+//@route  GET api/persons
+//@des    Get one persons
 //@access pubic
 
-/*router.post('/',(req,res)=>{
-   const newPerson=new person({
-       name:req.body.name,
-       lastName:req.body.lastName,
-       email:req.body.email
-   });
-   newPerson.save().then(person=res.json(person));
-});*/
+router.get('/:userId',async(req,res)=>{
+  const userId=req.params.userId;
 
+  person
+  .findById(userId)
+  .select("-password")
+  .then((person) => res.json(person))
+  .catch((err)=>{console.log(err)});
+ 
+});
 module.exports = router;
