@@ -14,7 +14,7 @@ function Messenger() {
   const [newMessage, setNewMessage] = useState("");
   const id = state.auth.person.id;
   const User = state.auth.person;
-  const scrollRef = useRef();
+  const scrollRef = useRef(null);
   useEffect(() => {
     const getConversations = () => {
       axios
@@ -56,12 +56,12 @@ function Messenger() {
       console.log(err);
     }
   };
-
   useEffect(() => {
-    if (scrollRef!="undefined") {
+    return () => {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    };
   }, [messages]);
+
   return (
     <div className="messenger">
       <div className="chatMenu">
