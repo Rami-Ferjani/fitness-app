@@ -15,7 +15,10 @@
     "reactjs-media": "^1.5.1",
     "reactstrap": "^8.9.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "timeago": "^1.6.7",
+    "timeago-react": "^3.0.2",
+    "timeago.js": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
