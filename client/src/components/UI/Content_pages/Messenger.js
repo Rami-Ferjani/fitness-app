@@ -5,16 +5,36 @@ import Conversation from "../Conversation";
 import Message from "../Message";
 import { useSelector } from "react-redux";
 import axios from "axios";
-
+import { io } from "socket.io-client";
 function Messenger() {
   const state = useSelector((state) => state);
   const [Conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  //const [socket, setSocket] = useState(null);
+  const socket = useRef();
   const id = state.auth.person.id;
   const User = state.auth.person;
   const scrollRef = useRef(null);
+
+  //Socket effects
+  useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+  }, []);
+  useEffect(() => {
+    return () => {
+      if (socket) {
+        socket.current.emit("addUser", User.id);
+        socket.current.on("getUsers", (users) => {
+          console.log(users);
+        });
+      }
+    };
+  }, [User]);
+  /*useEffect(() => {
+    setSocket(io("ws://localhost:8900"));
+  }, []);*/
   useEffect(() => {
     const getConversations = () => {
       axios
@@ -58,7 +78,9 @@ function Messenger() {
   };
   useEffect(() => {
     return () => {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      if (scrollRef.current) {
+        scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      }
     };
   }, [messages]);
 
