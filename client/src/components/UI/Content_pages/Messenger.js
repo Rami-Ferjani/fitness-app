@@ -12,7 +12,8 @@ function Messenger() {
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  //const [socket, setSocket] = useState(null);
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+
   const socket = useRef();
   const id = state.auth.person.id;
   const User = state.auth.person;
@@ -21,6 +22,13 @@ function Messenger() {
   //Socket effects
   useEffect(() => {
     socket.current = io("ws://localhost:8900");
+    socket.current.on("getMessge", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: data.now(),
+      });
+    });
   }, []);
   useEffect(() => {
     return () => {
@@ -59,6 +67,7 @@ function Messenger() {
     };
     getMessages();
   }, [currentChat]);
+
   const handleSubmit = async (e) => {
     console.log("ive started working");
     e.preventDefault();
@@ -67,6 +76,14 @@ function Messenger() {
       text: newMessage,
       conversationId: currentChat._id,
     };
+    const receiverId = currentChat.members.find((member) => member !== User.id);
+
+    //Sending socket message
+    socket.current.emit("sendMessage", {
+      senderId: User.id,
+      receiverId,
+      text: newMessage,
+    });
 
     try {
       const res = await axios.post("/api/messages", message);
