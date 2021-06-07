@@ -69,18 +69,32 @@ router.post("/", (req, res) => {
   });
 });
 
+//@route GET api/persons
+//des     Get all persons
+//@access public
+router.get("/:name", (req, res) => {
+  let userPattern = new RegExp("^" + req.params.name);
+  person
+    .find({ name: { $regex: userPattern } })
+    .select("-password")
+    .then((user) => {
+      res.json(user);
+    });
+});
+
 //@route  GET api/persons
 //@des    Get one persons
 //@access pubic
 
-router.get('/:userId',async(req,res)=>{
-  const userId=req.params.userId;
+router.get("/:userId", async (req, res) => {
+  const userId = req.params.userId;
 
   person
-  .findById(userId)
-  .select("-password")
-  .then((person) => res.json(person))
-  .catch((err)=>{console.log(err)});
- 
+    .findById(userId)
+    .select("-password")
+    .then((person) => res.json(person))
+    .catch((err) => {
+      console.log(err);
+    });
 });
 module.exports = router;
