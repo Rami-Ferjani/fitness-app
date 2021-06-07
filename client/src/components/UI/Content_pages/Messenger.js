@@ -12,7 +12,7 @@ function Messenger() {
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [arrivalMessage, setArrivalMessage] = useState({});
 
   const socket = useRef();
   const id = state.auth.person.id;
@@ -22,27 +22,32 @@ function Messenger() {
   //Socket effects
   useEffect(() => {
     socket.current = io("ws://localhost:8900");
-    socket.current.on("getMessge", (data) => {
+
+    socket.current.on("getMessage", (data) => {
+      console.log("I am timed perfectly");
       setArrivalMessage({
         sender: data.senderId,
         text: data.text,
-        createdAt: data.now(),
+        createdAt: Date.now(),
       });
     });
   }, []);
+
   useEffect(() => {
-    return () => {
-      if (socket) {
-        socket.current.emit("addUser", User.id);
-        socket.current.on("getUsers", (users) => {
-          console.log(users);
-        });
+    if (arrivalMessage && currentChat) {
+      if (currentChat.members.includes(arrivalMessage.sender)) {
+        //setMessages((prev) => [...prev, arrivalMessage]);
+        setMessages([...messages, arrivalMessage]);
       }
-    };
+    }
+  }, [arrivalMessage, currentChat]);
+  useEffect(() => {
+    socket.current.emit("addUser", User.id);
+    socket.current.on("getUsers", (users) => {
+      console.log(users);
+    });
   }, [User]);
-  /*useEffect(() => {
-    setSocket(io("ws://localhost:8900"));
-  }, []);*/
+
   useEffect(() => {
     const getConversations = () => {
       axios
@@ -56,6 +61,7 @@ function Messenger() {
     };
     getConversations();
   }, [id]);
+
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -81,7 +87,7 @@ function Messenger() {
     //Sending socket message
     socket.current.emit("sendMessage", {
       senderId: User.id,
-      receiverId,
+      receiverId: receiverId,
       text: newMessage,
     });
 
@@ -118,10 +124,14 @@ function Messenger() {
           {currentChat ? (
             <div>
               <div className="chatBoxTop">
-                {messages.map((message) => {
+                {messages.map((message, i) => {
                   return (
                     <div ref={scrollRef}>
-                      <Message message={message} own={message.sender === id} />
+                      <Message
+                        message={message}
+                        own={message.sender === id}
+                        key={i}
+                      />
                     </div>
                   );
                 })}

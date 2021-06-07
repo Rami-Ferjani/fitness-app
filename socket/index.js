@@ -7,19 +7,22 @@ let users = [];
 const addUser = (userId, socketId) => {
   !users.some((user) => user.userId === userId) &&
     users.push({ userId, socketId });
+
+  console.log("im gonna show users" + users);
 };
 
 const removeUser = (socketId) => {
   users = users.filter((user) => user.socketId !== socketId);
 };
 //get user to send message to
-const getUser = (userId) => {
-  return users.find((user) => user.userId === userId);
+const getUser = (Id) => {
+  return users.find((user) => user.userId === Id);
 };
 io.on("connection", (socket) => {
   console.log("a user connected");
   //when connect
   //after every connection take user id and socket id
+
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
     io.emit("getUsers", users);
@@ -27,14 +30,20 @@ io.on("connection", (socket) => {
 
   //send and get message
   socket.on("sendMessage", ({ senderId, receiverId, text }) => {
+    console.log("socket received the send message event");
+
     const user = getUser(receiverId);
-    io.to(user.socketId).emit("getMessage", {
-      senderId,
-      text,
-    });
+    // if user is online then we send him directly
+
+    if (user) {
+      io.to(user.socketId).emit("getMessage", {
+        senderId,
+        text,
+      });
+    }
   });
 
-  //when disconned
+  //when disconnected
   socket.on("disconnect", () => {
     console.log("a user disconnected!");
     removeUser(socket.id);
