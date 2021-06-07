@@ -1,8 +1,13 @@
 import "../../css/chatOnline.css";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function chatOnline() {
+function chatOnline({ onlineUsers, currentId, setCurrentChat, associates }) {
+  const [friends, setFriends] = useState([]);
+  const [onlineFriends, setOnlineFriends] = useState([]);
+
+  useEffect(() => {}, []);
+  console.log(associates);
   return (
     <div className="chatOnline">
       <div className="chatOnlineFriend">
