@@ -9,11 +9,14 @@ import { io } from "socket.io-client";
 function Messenger() {
   const state = useSelector((state) => state);
   const [Conversations, setConversations] = useState([]);
+  const [search, setSearch] = useState([]);
+  const [searchName, setSearchName] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState({});
-
+  const [onlineUsers, setonlineUsers] = useState([]);
+  const [associates, setAssociates] = useState([]);
   const socket = useRef();
   const id = state.auth.person.id;
   const User = state.auth.person;
@@ -24,7 +27,6 @@ function Messenger() {
     socket.current = io("ws://localhost:8900");
 
     socket.current.on("getMessage", (data) => {
-      console.log("I am timed perfectly");
       setArrivalMessage({
         sender: data.senderId,
         text: data.text,
@@ -45,6 +47,7 @@ function Messenger() {
     socket.current.emit("addUser", User.id);
     socket.current.on("getUsers", (users) => {
       console.log(users);
+      setonlineUsers(users);
     });
   }, [User]);
 
@@ -107,11 +110,38 @@ function Messenger() {
     };
   }, [messages]);
 
+  /* Conversations.map((conversation) => {
+    console.log("I worked here");
+    conversation.members.map((member) => {
+      if (member !== id) {
+        console.log("I worked here");
+        setAssociates([...associates, member]);
+      }
+    });
+  });*/
+  useEffect(() => {
+    axios.get(`/api/persons/${searchName}`).then((res) => {
+      setSearch(res.data);
+    });
+  }, [searchName]);
+  const handleClick = () => {};
   return (
     <div className="messenger">
       <div className="chatMenu">
         <div className="chatMenuWrapper">
-          <input placeholder="search for friends" className="chatMenuUnput" />
+          <input
+            placeholder="search for friends"
+            className="chatMenuUnput"
+            onChange={(event) => setSearchName(event.target.value)}
+          />
+          {search.map((search) => (
+            <div onClick={() => handleClick()}>
+              <div>
+                <h1>{search.email}</h1>
+              </div>
+              {/*<Conversation conversation={search} currentUser={User} />*/}
+            </div>
+          ))}
           {Conversations.map((conversation) => (
             <div onClick={() => setCurrentChat(conversation)}>
               <Conversation conversation={conversation} currentUser={User} />
@@ -157,7 +187,13 @@ function Messenger() {
       </div>
       <div className="chatOnline">
         <div className="chatOnlineWrapper">
-          <ChatOnline />
+          <h3>Group chats</h3>
+          <ChatOnline
+            onlineUsers={onlineUsers}
+            currentId={id}
+            setCurrentChat={setCurrentChat}
+            associates={associates}
+          />
           <ChatOnline />
           <ChatOnline />
           <ChatOnline />
