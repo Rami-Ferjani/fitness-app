@@ -9,17 +9,19 @@ function Conversation({ conversation, currentUser }) {
   useEffect(() => {
     const friendId = conversation.members.find((m) => m !== currentUser.id);
 
-    const getUser =  () => {
+    const getUser = () => {
       axios
         .get("/api/persons/" + friendId)
         .then((res) => {
           setUser(res.data);
+          console.log(res);
         })
         .catch((err) => {
           console.log(err);
         });
     };
     getUser();
+    console.log(User);
   }, [currentUser, conversation]);
   return (
     <div className="conversation">
