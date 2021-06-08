@@ -1,16 +1,19 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../../../css/Messenger.css";
 import ChatOnline from "../ChatOnline";
+import SearchUser from "../searchUser";
 import Conversation from "../Conversation";
 import Message from "../Message";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { io } from "socket.io-client";
+import { Button, Form, FormGroup } from "reactstrap";
 function Messenger() {
   const state = useSelector((state) => state);
   const [Conversations, setConversations] = useState([]);
   const [search, setSearch] = useState([]);
   const [searchName, setSearchName] = useState([]);
+  const [searchValue, setSearchValue] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -119,25 +122,67 @@ function Messenger() {
       }
     });
   });*/
-  useEffect(() => {
-    axios.get(`/api/persons/${searchName}`).then((res) => {
-      setSearch(res.data);
-    });
+  /**/ useEffect(() => {
+    const handleSearch = () => {
+      if (searchName.length === 0) {
+        setSearch([]);
+      } else if (searchName.length > 2) {
+        axios.get(`/api/persons/search/${searchName}`).then((res) => {
+          setSearch(res.data);
+        });
+      }
+    };
+    handleSearch();
+    setSearchName("");
   }, [searchName]);
-  const handleClick = () => {};
+  const handleSubmit2 = (e) => {
+    e.preventDefault();
+    setSearchName(searchValue);
+  };
+  const handleClick = (search) => {
+    console.log("I was clicked");
+    console.log(search);
+    setSearch([]);
+    setSearchValue("");
+    let exist = false;
+    Conversations.map((conv) => {
+      if (conv.members.includes(search._id)) {
+        setCurrentChat(conv);
+        exist = true;
+      }
+    });
+    if (!exist) {
+      setCurrentChat([]);
+      axios
+        .post("/")
+        .then((res) => {
+          setCurrentChat(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
   return (
     <div className="messenger">
       <div className="chatMenu">
         <div className="chatMenuWrapper">
-          <input
-            placeholder="search for friends"
-            className="chatMenuUnput"
-            onChange={(event) => setSearchName(event.target.value)}
-          />
-          {search.map((search) => (
-            <div onClick={() => handleClick()}>
+          <Form onSubmit={handleSubmit2}>
+            <FormGroup>
+              <input
+                placeholder="search for friends"
+                className="chatMenuUnput"
+                value={searchValue}
+                onChange={(event) => setSearchValue(event.target.value)}
+              />
+              <Button color="info" value="submit" />
+            </FormGroup>
+          </Form>
+          {search.map((search1) => (
+            <div onClick={() => handleClick(search1)}>
               <div>
-                <h1>{search.email}</h1>
+                {/*<h1>{search.name}</h1>*/}
+                <SearchUser name={search1.name} />
               </div>
               {/*<Conversation conversation={search} currentUser={User} />*/}
             </div>
@@ -194,10 +239,6 @@ function Messenger() {
             setCurrentChat={setCurrentChat}
             associates={associates}
           />
-          <ChatOnline />
-          <ChatOnline />
-          <ChatOnline />
-          <ChatOnline />
         </div>
       </div>
     </div>
