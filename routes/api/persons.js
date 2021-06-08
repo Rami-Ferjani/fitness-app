@@ -72,7 +72,7 @@ router.post("/", (req, res) => {
 //@route GET api/persons
 //des     Get all persons
 //@access public
-router.get("/:name", (req, res) => {
+router.get("/search/:name", (req, res) => {
   let userPattern = new RegExp("^" + req.params.name);
   person
     .find({ name: { $regex: userPattern } })
