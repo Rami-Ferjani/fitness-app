@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { io } from "socket.io-client";
 import { Button, Form, FormGroup } from "reactstrap";
+import CreateGroupChat from "../CreateGroupChat";
 function Messenger() {
   const state = useSelector((state) => state);
   const [Conversations, setConversations] = useState([]);
@@ -198,6 +199,10 @@ function Messenger() {
         });
     }
   };
+
+  const createGroupChat = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="messenger">
       <div className="chatMenu">
@@ -210,7 +215,9 @@ function Messenger() {
                 value={searchValue}
                 onChange={(event) => setSearchValue(event.target.value)}
               />
-              <Button color="info" value="submit" />
+              <Button color="info" value="submit">
+                Search
+              </Button>
             </FormGroup>
           </Form>
           {search.map((search1) => (
@@ -268,12 +275,14 @@ function Messenger() {
       <div className="chatOnline">
         <div className="chatOnlineWrapper">
           <h3>Group chats</h3>
-          {/*<ChatOnline
-            onlineUsers={onlineUsers}
-            currentId={id}
-            setCurrentChat={setCurrentChat}
-            associates={associates}
-          />*/}
+          <CreateGroupChat />
+          <Form onSubmit={createGroupChat}>
+            <FormGroup>
+              <Button color="info" value="Create Group chat">
+                Create Group Chat
+              </Button>
+            </FormGroup>
+          </Form>
         </div>
       </div>
     </div>
