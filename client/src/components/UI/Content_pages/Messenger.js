@@ -27,6 +27,7 @@ function Messenger() {
 
   //Socket effects
   useEffect(() => {
+    console.log("1");
     socket.current = io("ws://localhost:8900");
 
     socket.current.on("getMessage", (data) => {
@@ -39,7 +40,9 @@ function Messenger() {
   }, []);
 
   useEffect(() => {
+    console.log("2");
     if (arrivalMessage && currentChat) {
+      console.log(currentChat.members);
       if (currentChat.members.includes(arrivalMessage.sender)) {
         //setMessages((prev) => [...prev, arrivalMessage]);
         setMessages([...messages, arrivalMessage]);
@@ -47,6 +50,7 @@ function Messenger() {
     }
   }, [arrivalMessage, currentChat]);
   useEffect(() => {
+    console.log("3");
     socket.current.emit("addUser", User.id);
     socket.current.on("getUsers", (users) => {
       console.log(users);
@@ -55,6 +59,7 @@ function Messenger() {
   }, [User]);
 
   useEffect(() => {
+    console.log("4");
     const getConversations = () => {
       axios
         .get("/api/conversations/" + id)
@@ -69,6 +74,7 @@ function Messenger() {
   }, [id]);
 
   useEffect(() => {
+    console.log("5");
     const getMessages = async () => {
       try {
         const res = await axios.get("/api/messages/" + currentChat._id);
@@ -81,7 +87,8 @@ function Messenger() {
   }, [currentChat]);
 
   const handleSubmit = async (e) => {
-    console.log("ive started working");
+    console.log("6");
+
     e.preventDefault();
     const message = {
       sender: User.id,
@@ -106,6 +113,7 @@ function Messenger() {
     }
   };
   useEffect(() => {
+    console.log("7");
     return () => {
       if (scrollRef.current) {
         scrollRef.current.scrollIntoView({ behavior: "smooth" });
@@ -123,23 +131,33 @@ function Messenger() {
     });
   });*/
   /**/ useEffect(() => {
+    console.log("8");
     const handleSearch = () => {
       if (searchName.length === 0) {
         setSearch([]);
       } else if (searchName.length > 2) {
-        axios.get(`/api/persons/search/${searchName}`).then((res) => {
-          setSearch(res.data);
-        });
+        console.log("i sould be working");
+        axios
+          .get(`/api/persons/search1/${searchName}`)
+          .then((res) => {
+            setSearch(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     };
     handleSearch();
-    setSearchName("");
+    //setSearchName("");
   }, [searchName]);
   const handleSubmit2 = (e) => {
+    console.log("9");
     e.preventDefault();
+
     setSearchName(searchValue);
   };
   const handleClick = (search) => {
+    console.log("10");
     console.log("I was clicked");
     console.log(search);
     setSearch([]);
@@ -152,11 +170,28 @@ function Messenger() {
       }
     });
     if (!exist) {
-      setCurrentChat([]);
+      //setCurrentChat([]);
+      const config = {
+        headers: {
+          "content-Type": "application/json",
+        },
+      };
+      const senderId = id;
+      const receiverId = search._id;
+      const body = JSON.stringify({ senderId, receiverId });
       axios
-        .post("/")
+        .post("/api/conversations", body, config)
         .then((res) => {
+          console.log("after this");
+          console.log(res.data);
+
+          setConversations([res.data, ...Conversations]);
           setCurrentChat(res.data);
+          console.log("chat after this");
+          console.log(currentChat);
+          setSearchName("");
+          setSearchValue("");
+          setSearch([]);
         })
         .catch((err) => {
           console.log(err);
@@ -233,12 +268,12 @@ function Messenger() {
       <div className="chatOnline">
         <div className="chatOnlineWrapper">
           <h3>Group chats</h3>
-          <ChatOnline
+          {/*<ChatOnline
             onlineUsers={onlineUsers}
             currentId={id}
             setCurrentChat={setCurrentChat}
             associates={associates}
-          />
+          />*/}
         </div>
       </div>
     </div>
