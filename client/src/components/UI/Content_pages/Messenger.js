@@ -12,6 +12,7 @@ import CreateGroupChat from "../CreateGroupChat";
 function Messenger() {
   const state = useSelector((state) => state);
   const [Conversations, setConversations] = useState([]);
+  const [groupConversations, setgroupConversations] = useState([]);
   const [search, setSearch] = useState([]);
   const [searchName, setSearchName] = useState([]);
   const [searchValue, setSearchValue] = useState([]);
@@ -71,6 +72,15 @@ function Messenger() {
           console.log(err);
         });
     };
+    axios
+      .get("/api/groupConversations/" + id)
+      .then((res) => {
+       setgroupConversations(res.data);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     getConversations();
   }, [id]);
 
@@ -200,9 +210,6 @@ function Messenger() {
     }
   };
 
-  const createGroupChat = (e) => {
-    e.preventDefault();
-  };
   return (
     <div className="messenger">
       <div className="chatMenu">
@@ -227,6 +234,11 @@ function Messenger() {
                 <SearchUser name={search1.name} />
               </div>
               {/*<Conversation conversation={search} currentUser={User} />*/}
+            </div>
+          ))}
+            {groupConversations.map((conversation) => (
+            <div onClick={() => setCurrentChat(conversation)}>
+              <Conversation conversation={conversation} currentUser={User} groupChat={true} />
             </div>
           ))}
           {Conversations.map((conversation) => (
@@ -275,14 +287,11 @@ function Messenger() {
       <div className="chatOnline">
         <div className="chatOnlineWrapper">
           <h3>Group chats</h3>
-          <CreateGroupChat />
-          <Form onSubmit={createGroupChat}>
-            <FormGroup>
-              <Button color="info" value="Create Group chat">
-                Create Group Chat
-              </Button>
-            </FormGroup>
-          </Form>
+          <CreateGroupChat
+            buttonLabel="Create Group Chat"
+            setgroupConversations={setgroupConversations}
+            groupConversations={groupConversations}
+          />
         </div>
       </div>
     </div>

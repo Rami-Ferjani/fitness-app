@@ -3,10 +3,11 @@ import "../../css/Conversation.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function Conversation({ conversation, currentUser }) {
+function Conversation({ conversation, currentUser, groupChat }) {
   const [User, setUser] = useState({});
-
+  const [Name, setName] = useState("");
   useEffect(() => {
+   
     const friendId = conversation.members.find((m) => m !== currentUser.id);
 
     const getUser = () => {
@@ -14,25 +15,43 @@ function Conversation({ conversation, currentUser }) {
         .get("/api/persons/" + friendId)
         .then((res) => {
           setUser(res.data);
-          console.log(res);
+          
         })
         .catch((err) => {
           console.log(err);
         });
     };
     getUser();
-    console.log(User);
+    
   }, [currentUser, conversation]);
-  return (
-    <div className="conversation">
-      <img
-        className="conversationImg"
-        src="https://www.w3schools.com/howto/img_avatar.png"
-        alt=""
-      />
-      <span className="conversationName">{User.name}</span>
-    </div>
-  );
+  /*if(conversation.name){
+    setName(conversation.name);
+  }else{
+    setName(User.name);
+  };*/
+  if (!groupChat) {
+    return (
+      <div className="conversation">
+        <img
+          className="conversationImg"
+          src="https://www.w3schools.com/howto/img_avatar.png"
+          alt=""
+        />
+        <span className="conversationName">{User.name}</span>
+      </div>
+    );
+  } else {
+    return (
+      <div className="conversation">
+        <img
+          className="conversationImg"
+          src="https://image.flaticon.com/icons/png/512/1911/1911061.png"
+          alt=""
+        />
+        <span className="conversationName">{conversation.name}</span>
+      </div>
+    );
+  }
 }
 
 export default Conversation;

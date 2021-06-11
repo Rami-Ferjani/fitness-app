@@ -26,6 +26,7 @@ const config = require("config");
 const workout = require("./routes/api/workout.js");
 const chat = require("./routes/api/Chats.js");
 const conversations = require("./routes/api/conversations");
+const groupConversations = require("./routes/api/groupConversations");
 const messages = require("./routes/api/messages");
 //Bodyparser Middleware
 app.use(express.json());
@@ -51,6 +52,7 @@ app.use("/api/auth", auth);
 app.use("/api/workout", workout);
 app.use("/api/chats", chat);
 app.use("/api/conversations", conversations);
+app.use("/api/groupConversations", groupConversations);
 app.use("/api/messages", messages);
 
 //server static assets if in production
