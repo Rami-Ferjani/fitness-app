@@ -98,3 +98,17 @@ router.get("/:userId", async (req, res) => {
     });
 });
 module.exports = router;
+
+router.put("/:userId", (req, res) => {
+  person.findOneAndUpdate(
+    { _id: req.params.userId },
+    req.body,
+    { new: true },
+    (err, person) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(person);
+    }
+  );
+});

@@ -54,6 +54,7 @@ router.post("/", (req, res) => {
               admin: person.admin,
               workout: person.workout,
               day: person.day,
+              workoutref: person.workoutref,
             },
           });
         }
