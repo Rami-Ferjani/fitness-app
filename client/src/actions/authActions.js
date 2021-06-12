@@ -20,15 +20,13 @@ export const loadUser = () => (dispatch, getState) => {
   axios
     .get("/api/auth/person", tokenConfig(getState))
     .then((res) => {
-      /*axios
-        .get(`/api/workout/${res.data.person.workoutref}`)
-        .then((response) => {
-          console.log("i got here");
-          dispatch({
-            type: WORKOUT_LOADED,
-            payload: response.data,
-          });
-        });*/
+      axios.get(`/api/workout/${res.data.workoutref}`).then((response) => {
+        console.log("i got here");
+        dispatch({
+          type: WORKOUT_LOADED,
+          payload: response.data,
+        });
+      });
       dispatch({
         type: USER_LOADED,
         payload: res.data,
@@ -36,6 +34,7 @@ export const loadUser = () => (dispatch, getState) => {
     })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
+      console.log(err);
       dispatch({
         type: AUTH_ERROR,
       });
