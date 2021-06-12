@@ -75,8 +75,7 @@ function Messenger() {
     axios
       .get("/api/groupConversations/" + id)
       .then((res) => {
-       setgroupConversations(res.data);
-        
+        setgroupConversations(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -236,9 +235,13 @@ function Messenger() {
               {/*<Conversation conversation={search} currentUser={User} />*/}
             </div>
           ))}
-            {groupConversations.map((conversation) => (
+          {groupConversations.map((conversation) => (
             <div onClick={() => setCurrentChat(conversation)}>
-              <Conversation conversation={conversation} currentUser={User} groupChat={true} />
+              <Conversation
+                conversation={conversation}
+                currentUser={User}
+                groupChat={true}
+              />
             </div>
           ))}
           {Conversations.map((conversation) => (

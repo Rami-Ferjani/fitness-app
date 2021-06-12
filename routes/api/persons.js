@@ -112,3 +112,21 @@ router.put("/:userId", (req, res) => {
     }
   );
 });
+
+router.get("/", (req, res) => {
+  person.find({}, (err, person) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(person);
+  });
+});
+
+/*router.delete("/:userId", (req, res) => {
+  person.remove({ _id: req.params.userId }, (err, person) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ msg: "successufly deleted user" });
+  });
+});*/

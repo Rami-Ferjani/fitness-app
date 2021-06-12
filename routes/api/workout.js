@@ -36,4 +36,13 @@ router.post("/", (req, res) => {
     res.json(Workout);
   });
 });
+
+router.delete("/:workoutId", (req, res) => {
+  Workout.remove({ _id: req.params.workoutId }, (err, person) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ msg: "successufly deleted player" });
+  });
+});
 module.exports = router;

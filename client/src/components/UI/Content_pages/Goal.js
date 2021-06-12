@@ -49,7 +49,7 @@ const Example = (props) => {
       .put(`/api/persons/${person.id}`, body, config)
       .then((res) => {
         console.log(res.data);
-        setSuccessMsg("Your goal was updated");
+        setSuccessMsg("Your program was updated");
       })
       .catch((err) => {
         console.log(err);

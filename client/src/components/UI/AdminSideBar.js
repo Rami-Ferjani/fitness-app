@@ -5,7 +5,7 @@ import classNames from "classnames";
 //import {Link} from "react-router-dom";
 import "../../css/SideBar.css";
 import Logout from "../auth/Logout";
-import {BsBrightnessHighFill} from "react-icons/bs";
+import { BsBrightnessHighFill } from "react-icons/bs";
 const AdminSideBar = ({ isOpen, toggle }) => {
   return (
     <div className={classNames("sidebar", { "is-open": isOpen })}>
@@ -17,18 +17,19 @@ const AdminSideBar = ({ isOpen, toggle }) => {
       </div>
       <div className="side-menu">
         <Nav vertical className="list-unstyled pb-3">
-         
           <NavItem>
             <NavLink tag={Link} to={"/createWorkout"}>
               Create workout
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>Manage workout</NavLink>
+            <NavLink tag={Link} to={"/manageWorkout"}>
+              Manage workout
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={Link} to={"faq"}>
-              FAQ
+            <NavLink tag={Link} to={"ManageUsers"}>
+              Manage Users
             </NavLink>
           </NavItem>
           <NavItem>
@@ -37,9 +38,8 @@ const AdminSideBar = ({ isOpen, toggle }) => {
             </NavLink>
           </NavItem>
           <NavItem className="red">
-            <NavLink  tag={Link} to={"logout"}>
-            <Logout/>
-              
+            <NavLink tag={Link} to={"logout"}>
+              <Logout />
             </NavLink>
           </NavItem>
         </Nav>

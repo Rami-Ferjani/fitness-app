@@ -5,10 +5,9 @@ const ManageWorkouts = () => {
   const [List, setList] = useState([]);
   useEffect(() => {
     axios
-      .get("/api/workout/")
+      .get("/api/persons/")
       .then((res) => {
         setList(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -16,12 +15,11 @@ const ManageWorkouts = () => {
     console.log("working");
   }, [List]);
   const handleClick = (item) => {
-    //e.preventDefault;
     const newList = List.filter((workout) => workout._id !== item._id);
-    console.log(newList);
+
     setList(newList);
     axios
-      .delete(`/api/workout/${item._id}`)
+      .delete(`/api/persons/${item._id}`)
       .then(() => console.log("succefful"));
   };
   return (
@@ -30,17 +28,18 @@ const ManageWorkouts = () => {
         <thead>
           <th>#</th>
           <th> Name</th>
-          <th>Reference</th>
-          <th>Duration</th>
-          <th>Remove</th>
+          <th>Email</th>
+          <th>Workout</th>
+          <th>Day</th>
         </thead>
         <tbody>
           {List.map((item, i) => (
             <tr>
               <td>{i}</td>
               <td>{item.name}</td>
-              <td>{item.Workoutref}</td>
-              <td>{item.daysDB.length}</td>
+              <td>{item.email}</td>
+              <td>{item.workoutname}</td>
+              <td>{item.day}</td>
               <td>
                 <Button color="danger" onClick={() => handleClick(item)}>
                   Delete

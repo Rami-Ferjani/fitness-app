@@ -9,6 +9,9 @@ import Workout from "./Content_pages/Workout";
 import CreateWorkout from "./Content_pages/CreateWorkout";
 import Messenger from "./Content_pages/Messenger";
 import Goal from "./Content_pages/Goal";
+import ManageWorkouts from "./Content_pages/ManageWorkouts";
+import ManageUsers from "./Content_pages/ManageUsers";
+
 function Content({ sidebarIsOpen, toggleSidebar }) {
   const paragraph = "I am a Paragraph describing  the workout";
   const day = 1;
@@ -23,9 +26,13 @@ function Content({ sidebarIsOpen, toggleSidebar }) {
         <Route exact path="/about" component={() => "About"} />
 
         <Route exact path="/Logout" component={() => "Pages"} />
-        <Route exact path="/faq" component={() => "FAQ"} />
+        <Route
+          exact
+          path="/manageWorkout"
+          component={() => <ManageWorkouts />}
+        />
         <Route exact path="/contact" component={() => <Profile />} />
-        <Route exact path="/Home-1" component={() => "Home-1"} />
+        <Route exact path="/ManageUsers" component={() => <ManageUsers />} />
         <Route exact path="/" component={() => "Home-2"} />
         <Route exact path="/Home-3" component={() => "Home-3"} />
         <Route
