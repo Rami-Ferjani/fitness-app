@@ -14,11 +14,10 @@ router.get("/", (req, res) => {
     res.json(Workout);
   });
 });
-router.get("/:workoutName", (req, res) => {
-  
-  const name = req.params.workoutName;
-  
-  Workout.findOne({ WorkoutName: name }, (err, workout) => {
+router.get("/:workoutref", (req, res) => {
+  const ref = req.params.workoutref;
+
+  Workout.findOne({ Workoutref: ref }, (err, workout) => {
     if (err) {
       res.send(err);
     }

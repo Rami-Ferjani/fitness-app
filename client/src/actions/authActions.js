@@ -19,91 +19,97 @@ export const loadUser = () => (dispatch, getState) => {
 
   axios
     .get("/api/auth/person", tokenConfig(getState))
-    .then((res) =>
-    {axios.get(`/api/workout/${res.data.name}`).then((response)=>{
-      dispatch({
-        type: WORKOUT_LOADED,
-        payload:response.data,
-      })
-    });
+    .then((res) => {
+      /*axios
+        .get(`/api/workout/${res.data.person.workoutref}`)
+        .then((response) => {
+          console.log("i got here");
+          dispatch({
+            type: WORKOUT_LOADED,
+            payload: response.data,
+          });
+        });*/
       dispatch({
         type: USER_LOADED,
         payload: res.data,
-      })}
-    )
+      });
+    })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: AUTH_ERROR,
       });
     });
-   
-
 };
 
 //Register user
-export const register = ({ name, email, password }) => (dispatch) => {
-  const config = {
-    headers: {
-      "content-Type": "application/json",
-    },
-  };
+export const register =
+  ({ name, email, password }) =>
+  (dispatch) => {
+    const config = {
+      headers: {
+        "content-Type": "application/json",
+      },
+    };
 
-  //request body
-  const body = JSON.stringify({ name, email, password });
+    //request body
+    const body = JSON.stringify({ name, email, password });
 
-  axios
-    .post("/api/persons", body, config)
-    .then((res) =>
-      dispatch({
-        type: REGISTER_SUCCESS,
-        payload: res.data,
-      })
-    )
-    .catch((err) => {
-      dispatch(
-        returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
-      );
-      dispatch({
-        type: REGISTER_FAIL,
+    axios
+      .post("/api/persons", body, config)
+      .then((res) =>
+        dispatch({
+          type: REGISTER_SUCCESS,
+          payload: res.data,
+        })
+      )
+      .catch((err) => {
+        dispatch(
+          returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
+        );
+        dispatch({
+          type: REGISTER_FAIL,
+        });
       });
-    });
-};
-
+  };
 
 //Login User
-export const login = ({ email, password }) => (dispatch) => {
-  const config = {
-    headers: {
-      "content-Type": "application/json",
-    },
-  };
-   //-request body
-  const body = JSON.stringify({ email, password });
+export const login =
+  ({ email, password }) =>
+  (dispatch) => {
+    const config = {
+      headers: {
+        "content-Type": "application/json",
+      },
+    };
+    //-request body
+    const body = JSON.stringify({ email, password });
 
-  axios
-    .post("/api/auth", body, config)
-    .then((res) =>
-      {axios.get(`/api/workout/${res.data.person.workout}`).then((response)=>{
-        dispatch({
-          type: WORKOUT_LOADED,
-          payload:response.data,
+    axios
+      .post("/api/auth", body, config)
+      .then((res) => {
+        const ref = res.data.person.workoutref;
+        axios.get(`/api/workout/${ref}`).then((response) => {
+          console.log(res.data);
+          dispatch({
+            type: WORKOUT_LOADED,
+            payload: response.data,
+          });
+          dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data,
+          });
         });
+      })
+      .catch((err) => {
+        dispatch(
+          returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
+        );
         dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data,
-      })}
-    )})
-    .catch((err) => {
-      dispatch(
-        returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
-      );
-      dispatch({
-        type: LOGIN_FAIL,
+          type: LOGIN_FAIL,
+        });
       });
-    });
-};
-
+  };
 
 //Logout User
 export const logout = () => {

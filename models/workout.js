@@ -15,6 +15,10 @@ const workoutSchema = new Schema({
     type: Array,
     required: true,
   },
+  Workoutref: {
+    type: String,
+    default: null,
+  },
 });
 
 module.exports = Workout = mongoose.model("Workout", workoutSchema);
