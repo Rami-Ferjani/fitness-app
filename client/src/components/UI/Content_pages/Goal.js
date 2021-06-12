@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import {
   Col,
@@ -9,8 +9,9 @@ import {
   Label,
   Input,
   FormText,
+  Alert,
 } from "reactstrap";
-
+import { LOGIN_SUCCESS } from "../../../actions/types";
 const Example = (props) => {
   const [Goal, setGoal] = useState("");
   const [Age, setAge] = useState("");
@@ -18,6 +19,8 @@ const Example = (props) => {
   const [Time, setTime] = useState("");
   const [Place, setPlace] = useState("");
   const person = useSelector((state) => state.auth.person);
+  const [ErrorMsg, setErrorMsg] = useState("");
+  const [SuccessMsg, setSuccessMsg] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     let g, a, s, t, p;
@@ -46,11 +49,17 @@ const Example = (props) => {
       .put(`/api/persons/${person.id}`, body, config)
       .then((res) => {
         console.log(res.data);
+        setSuccessMsg("Your goal was updated");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setErrorMsg("something went wrong ,please try againt");
+      });
   };
   return (
     <Form onSubmit={handleSubmit}>
+      {ErrorMsg ? <Alert color="danger">{ErrorMsg}</Alert> : null}
+      {SuccessMsg ? <Alert color="success">{SuccessMsg}</Alert> : null}
       <FormGroup row>
         <Label for="examplePassword" sm={2}>
           Goal
