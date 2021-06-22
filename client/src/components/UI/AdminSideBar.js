@@ -13,32 +13,55 @@ const AdminSideBar = ({ isOpen, toggle }) => {
         <span color="info" onClick={toggle} style={{ color: "#fff" }}>
           &times;
         </span>
-        <h3>Planet Fitness</h3>
+        <h3>
+          Planet <span>Fitness</span>
+        </h3>
       </div>
       <div className="side-menu">
-        <Nav vertical className="list-unstyled pb-3">
+        <Nav vertical className="list-unstyled pb-3 listed">
           <NavItem>
-            <NavLink tag={Link} to={"/createWorkout"}>
+            <img
+              className="profile_image"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROSMct6mmbHLDy0gyDyBjMBkVVRYWs4KZ8-A&usqp=CAU"
+            ></img>
+          </NavItem>
+          <NavItem style={{ textDecoration: "none" }}>
+            <NavLink
+              tag={Link}
+              to={"/createWorkout"}
+              className="white"
+              style={{ textDecoration: "none" }}
+            >
               Create workout
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={Link} to={"/manageWorkout"}>
+            <NavLink
+              tag={Link}
+              to={"/manageWorkout"}
+              className="white"
+              style={{ textDecoration: "none" }}
+            >
               Manage workout
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={Link} to={"ManageUsers"}>
+            <NavLink
+              tag={Link}
+              to={"ManageUsers"}
+              className="white"
+              style={{ textDecoration: "none" }}
+            >
               Manage Users
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink tag={Link} to={"/contact"}>
+            <NavLink tag={Link} to={"/contact"} className="white">
               Profile
             </NavLink>
           </NavItem>
-          <NavItem className="red">
-            <NavLink tag={Link} to={"logout"}>
+          <NavItem className="red white">
+            <NavLink tag={Link} to={"logout"} className="white">
               <Logout />
             </NavLink>
           </NavItem>

@@ -97,6 +97,15 @@ class RegisterModal extends Component {
                   className="mb-3"
                   onChange={this.onChange}
                 />
+                  <Label for="name">Last name</Label>
+                <Input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="name"
+                  className="mb-3"
+                  onChange={this.onChange}
+                />
                 <Label for="email">Email</Label>
                 <Input
                   type="temail"

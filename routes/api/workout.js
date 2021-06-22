@@ -42,7 +42,7 @@ router.delete("/:workoutId", (req, res) => {
     if (err) {
       res.send(err);
     }
-    res.json({ msg: "successufly deleted player" });
+    res.json({ msg: "successufly deleted workout" });
   });
 });
 module.exports = router;

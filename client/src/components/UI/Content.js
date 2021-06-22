@@ -11,7 +11,8 @@ import Messenger from "./Content_pages/Messenger";
 import Goal from "./Content_pages/Goal";
 import ManageWorkouts from "./Content_pages/ManageWorkouts";
 import ManageUsers from "./Content_pages/ManageUsers";
-
+import LeaderBoard from "./Content_pages/LeaderBoard";
+import "../../css/content.css";
 function Content({ sidebarIsOpen, toggleSidebar }) {
   const paragraph = "I am a Paragraph describing  the workout";
   const day = 1;
@@ -44,7 +45,7 @@ function Content({ sidebarIsOpen, toggleSidebar }) {
         <Route exact path="/page-1" component={() => "page-1"} />
         <Route exact path="/page-2" component={() => <Goal />} />
         <Route exact path="/page-3" component={() => <Messenger />} />
-        <Route exact path="/page-4" component={() => "page-4"} />
+        <Route exact path="/LeaderBoard" component={() => <LeaderBoard />} />
         {/* Admin Router}*/}
         <Route
           exact

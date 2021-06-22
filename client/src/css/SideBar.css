@@ -1,23 +1,108 @@
 .sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #ebeef8;
-    color: #fff;
+    background: #3f4d67;
+    color: #9dabc4;
     margin-left: -250px;
     transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
     height:auto;
     text-align: center;
+    text-decoration: none !important;
+    text-decoration-style:none;
+   /*overflow: auto;
+   /* z-index: 1;
+    top: 0;
+    background: #2f323a;
+    margin-top: 70px;
+    padding-top: 30px;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: calc(100% - 9%);
+    transition: 0.5s;
+    transition-property: left;
+    overflow-y: auto;*/
     
   }
-  .red:hover{
-      background-color: red;
+  .sidebar .profile_image{
+    width:100px;
+    height: 100px;
+    border-radius:100px ;
+    margin-bottom:10px;
   }
+  .listed{
+    text-decoration: none;
+  }
+  .side-menu{
+    text-decoration: none;
+    
+  }
+  .sidebar a {
+    color:#fff;
+    display: block;
+    /*right: 30px;*/
+    background-color: #3f4d67;
+    width:auto;
+    height: auto;
+    line-height:32px ;
+    text-decoration:none !important;
+    text-decoration-style:none ;
+    background-image: none !important;
+    padding-right:30px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+    font-size:15px;
+  } 
+  .sidebar a:hover{
+    background: #19b3d3;
+  }
+  .sidebar NavLink{
+    text-decoration: none;
+  }
+  NavLink{
+    text-decoration: none;
+  }
+  .siderbar i{
+    padding-right:10px
+  }
+  .sidebar h3{
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 900;
+  }
+  .sidebar h4{
+    color: #ccc;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 900;
+    text-decoration: none;
+  }
+  .sidebar span{
+    color: #19B3D3;
+  }
+  .white{
+    color: #c9d0dc;
+   
+  }
+  /*.white:hover{
+    color: #20bade;
+    
+  }*/
+  /*.red:hover{
+      background-color: #20bade;
+  }*/
   .sidebar.is-open {
     margin-left: 0;
     transition: 0.5s;
   }
   .sidebar-header {
-    background: #dde0f0;
+    background: #3f4d67
   }
   .content {
     padding: 20px;
@@ -38,6 +123,9 @@
       max-width: 100%;
       margin-left: 0;
       transition: all 0.5s, height 0s;
+    }
+    .sidebar.is-open a {
+    text-decoration: none;
     }
   
     .sidebar.is-open > .sidebar-header span {

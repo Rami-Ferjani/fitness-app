@@ -1,0 +1,9 @@
+https://en.wikipedia.org/wiki/Visual_Studio_Code (visual studio def)
+https://en.wikipedia.org/wiki/Redux_(JavaScript_library)
+https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)
+https://www.c-sharpcorner.com/article/reactstrap-in-reactjs/
+https://en.wikipedia.org/wiki/Express.js
+https://en.wikipedia.org/wiki/StarUML
+https://app.diagrams.net/
+https://en.wikipedia.org/wiki/Git
+https://www.axelerant.com/resources/team-blog/api-testing-with-postman

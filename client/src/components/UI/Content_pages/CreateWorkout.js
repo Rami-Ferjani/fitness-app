@@ -11,6 +11,7 @@ function CreateWorkout(props) {
   const [phase, setPhase] = useState(1);
   const [WorkoutName, setWorkoutName] = useState("");
   const [Description, setDescription] = useState("");
+  const [reference, setReference] = useState({});
   const [workout, setWorkout] = useState({});
   const [daysDB, setDaysDB] = useState([]);
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ function CreateWorkout(props) {
       },
     };
 
-    const body = JSON.stringify({ WorkoutName, Description, daysDB });
+    const body = JSON.stringify({ WorkoutName, Description,reference, daysDB });
     axios
       .post("/api/workout", body, config)
       .then((res) => console.log(res))
@@ -76,6 +77,16 @@ function CreateWorkout(props) {
               name="duration"
               id="duration"
               onChange={(event) => setDuration(event.target.value)}
+              value={duration}
+            />
+          </FormGroup>
+           <FormGroup>
+            <Label for="exampleSelect">Workout Reference</Label>
+            <Input
+              type="text"
+              name="duration"
+              id="duration"
+              onChange={(event) => setReference(event.target.value)}
               value={duration}
             />
           </FormGroup>

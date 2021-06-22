@@ -24,20 +24,20 @@ const Example = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let g, a, s, t, p;
-    if (Goal === "Build Muscle") g = 1;
-    else g = 2;
-    if (Age === "Less than 18 years old") a = 10;
-    else if (Age === "Between 18 and 30 years old") a = 20;
-    else if (Age === "Older than 30 years old") a = 30;
+    if (Goal === "Build Muscle") g = 10000;
+    else g = 20000;
+    if (Age === "Less than 18 years old") a = 1;
+    else if (Age === "Between 18 and 30 years old") a = 2;
+    else if (Age === "Older than 30 years old") a = 3;
 
-    if (Sexe === "Male") s = 100;
-    else s = 200;
-    if (Place === "Gym") p = 1000;
-    else if (Place === "Home workout") p = 2000;
+    if (Sexe === "Male") s = 1000;
+    else s = 2000;
+    if (Place === "Gym") p = 100;
+    else if (Place === "Home workout") p = 200;
 
-    if (Time === "Less than 3 hours per week") t = 10000;
-    else if (Time === "between 3 and 6 hours per week") t = 20000;
-    else if (Time === "More than 6 hours per week") t = 30000;
+    if (Time === "Less than 3 hours per week") t = 10;
+    else if (Time === "between 3 and 6 hours per week") t = 20;
+    else if (Time === "More than 6 hours per week") t = 30;
     const ref = g + a + s + t + p;
     const body = JSON.stringify({ workoutref: `${ref}` });
     const config = {
@@ -74,23 +74,6 @@ const Example = (props) => {
             <option></option>
             <option>Build Muscle</option>
             <option>Lose Weight</option>
-          </Input>
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="examplePassword" sm={2}>
-          Age
-        </Label>
-        <Col sm={10}>
-          <Input
-            type="select"
-            name="select"
-            id="exampleSelect"
-            onChange={(event) => setAge(event.target.value)}
-          >
-            <option></option> <option>Less than 18 years old</option>
-            <option>Between 18 and 30 years old</option>
-            <option>Older than 30 years old</option>
           </Input>
         </Col>
       </FormGroup>
@@ -142,6 +125,23 @@ const Example = (props) => {
             <option>Less than 3 hours per week</option>
             <option>between 3 and 6 hours per week</option>
             <option>More than 6 hours per week</option>
+          </Input>
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="examplePassword" sm={2}>
+          Age
+        </Label>
+        <Col sm={10}>
+          <Input
+            type="select"
+            name="select"
+            id="exampleSelect"
+            onChange={(event) => setAge(event.target.value)}
+          >
+            <option></option> <option>Less than 18 years old</option>
+            <option>Between 18 and 30 years old</option>
+            <option>Older than 30 years old</option>
           </Input>
         </Col>
         <Button color="dark" style={{ marginTop: "2rem" }} block>

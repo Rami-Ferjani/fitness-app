@@ -25,7 +25,8 @@ function LandingPage(props) {
   if (auth) admin = state.auth.person.admin;
   let h2 = "";
 
-  if (auth) {
+  /*if (state.auth.isLoading === true) {
+  } else*/ if (auth) {
     return <Dashboard />;
   } else {
     return (

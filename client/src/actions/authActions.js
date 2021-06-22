@@ -87,6 +87,7 @@ export const login =
     axios
       .post("/api/auth", body, config)
       .then((res) => {
+        //console.log(res);
         const ref = res.data.person.workoutref;
         axios.get(`/api/workout/${ref}`).then((response) => {
           console.log(res.data);

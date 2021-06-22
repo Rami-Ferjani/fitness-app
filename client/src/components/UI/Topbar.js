@@ -46,7 +46,7 @@ function Topbar({ toggleSidebar }) {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/page-4"}>
+              <NavLink tag={Link} to={"/LeaderBoard"}>
                 Leaderboard
               </NavLink>
             </NavItem>
