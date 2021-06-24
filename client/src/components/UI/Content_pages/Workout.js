@@ -32,14 +32,14 @@ function Workout(props) {
 
   if (day == "0") {
     return (
-      <div>
+      <div className="scroll">
         {" "}
         <h1>Welcome to day 0</h1>
       </div>
     );
   } else
     return (
-      <div>
+      <div className="scroll">
         <h1>Welcom to day {props.day}</h1>
         <div className="second">
           <p className="paragraph">{paragraph}</p>

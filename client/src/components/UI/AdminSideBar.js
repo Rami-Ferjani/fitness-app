@@ -22,7 +22,7 @@ const AdminSideBar = ({ isOpen, toggle }) => {
           <NavItem>
             <img
               className="profile_image"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROSMct6mmbHLDy0gyDyBjMBkVVRYWs4KZ8-A&usqp=CAU"
+              src="https://i.imgur.com/YvxQ7EW.jpeg"
             ></img>
           </NavItem>
           <NavItem style={{ textDecoration: "none" }}>

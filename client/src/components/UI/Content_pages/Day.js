@@ -54,7 +54,7 @@ const Day = (props) => {
   return (
     <div>
       <p> day {day}</p>
-      <p>{NumEx}</p>
+
       {Exercices.map((exercice, i) => {
         return <Exercice AddExercice={AddExercice} key={i} />;
       })}

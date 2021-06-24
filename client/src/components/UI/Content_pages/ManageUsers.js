@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Table, Button } from "reactstrap";
+import "../../../css/ManageWorkout.css";
 const ManageWorkouts = () => {
   const [List, setList] = useState([]);
   useEffect(() => {
@@ -23,13 +24,13 @@ const ManageWorkouts = () => {
       .then(() => console.log("succefful"));
   };
   return (
-    <div>
+    <div className="scroll">
       <Table>
         <thead>
           <th>#</th>
           <th> Name</th>
           <th>Email</th>
-          <th>Workout</th>
+          <th>Workout Reference</th>
           <th>Day</th>
         </thead>
         <tbody>
@@ -38,7 +39,7 @@ const ManageWorkouts = () => {
               <td>{i}</td>
               <td>{item.name}</td>
               <td>{item.email}</td>
-              <td>{item.workoutname}</td>
+              <td>{item.Workoutref}</td>
               <td>{item.day}</td>
               <td>
                 <Button color="danger" onClick={() => handleClick(item)}>

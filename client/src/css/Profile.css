@@ -1,7 +1,18 @@
-.container3{
+/*.container3{
     display:inline-block;
     height:400px;
     background-color: #fff;
     overflow-y: auto;
     border-radius: 20px;
+}*/
+.scroll{
+    overflow-y: scroll;
+    height:550px;
+    background-color: #fff;
+    padding:10px;
+    border-radius: 20px;
+   
+    -webkit-box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
+box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
 }

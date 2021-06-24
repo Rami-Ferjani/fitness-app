@@ -1,7 +1,7 @@
 import { Table, Button } from "reactstrap";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import "../../../css/Leaderboard.css";
 const Example = (props) => {
   const [List, setList] = useState([]);
   useEffect(() => {
@@ -17,13 +17,14 @@ const Example = (props) => {
     console.log("working");
   }, [List]);
   return (
-    <Table dark>
+    <div className="scroll">
+    <Table >
       <thead>
         <tr>
           <th>#</th>
           <th> Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Email</th>
+          <th>Points</th>
         </tr>
       </thead>
       <tbody>
@@ -32,12 +33,12 @@ const Example = (props) => {
             <td>{i+1}</td>
             <td>{item.name}</td>
             <td>{item.email}</td>
-            <td>{item.workoutname}</td>
+            
             <td>{item.day}</td>
           </tr>
         ))}
       </tbody>
-    </Table>
+    </Table></div>
   );
 };
 

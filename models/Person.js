@@ -32,5 +32,9 @@ const PersonSchema = new Schema({
     type: Number,
     default: 0,
   },
+  startingData:{
+    type:Date,
+    default:null,
+  },
 });
 module.exports = Person = mongoose.model("person", PersonSchema);

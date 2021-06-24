@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-
+import "../../../css/CreateWorkout.css";
 import Day from "./Day";
 import { createWorkout } from "../../../actions/workoutActions";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ function CreateWorkout(props) {
   const [phase, setPhase] = useState(1);
   const [WorkoutName, setWorkoutName] = useState("");
   const [Description, setDescription] = useState("");
-  const [reference, setReference] = useState({});
+  const [reference, setReference] = useState("");
   const [workout, setWorkout] = useState({});
   const [daysDB, setDaysDB] = useState([]);
   const dispatch = useDispatch();
@@ -30,7 +30,12 @@ function CreateWorkout(props) {
       },
     };
 
-    const body = JSON.stringify({ WorkoutName, Description,reference, daysDB });
+    const body = JSON.stringify({
+      WorkoutName,
+      Description,
+      reference,
+      daysDB,
+    });
     axios
       .post("/api/workout", body, config)
       .then((res) => console.log(res))
@@ -54,71 +59,73 @@ function CreateWorkout(props) {
 
   if (phase == 1) {
     return (
-      <div>
-        <h3>Phase 1</h3>
-        <Form>
-          <FormGroup>
-            <Label for="Workout">Workout Name</Label>
-            <Input
-              type="text"
-              name="text"
-              id="name"
-              onChange={(event) => {
-                setWorkoutName(event.target.value);
-              }}
-              value={WorkoutName}
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="exampleSelect">Duration</Label>
-            <Input
-              type="text"
-              name="duration"
-              id="duration"
-              onChange={(event) => setDuration(event.target.value)}
-              value={duration}
-            />
-          </FormGroup>
-           <FormGroup>
-            <Label for="exampleSelect">Workout Reference</Label>
-            <Input
-              type="text"
-              name="duration"
-              id="duration"
-              onChange={(event) => setReference(event.target.value)}
-              value={duration}
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <Label for="exampleText">Workout description</Label>
-            <Input
-              type="textarea"
-              name="text"
-              id="exampleText"
-              onChange={(event) => {
-                setDescription(event.target.value);
-              }}
-              value={Description}
-            />
-          </FormGroup>
-        </Form>
+      <div className="scroll">
         <div>
-          {days.map((day) => {
-            return (
-              <Day day={day} key={day} AddDay={AddDay} value={daysDB[day]} />
-            );
-          })}
-          {/*<Button onClick={() => setPhase(2)}>Next</Button>*/}
-          <Button
-            color="success"
-            onClick={() => {
-              submit();
-            }}
-          >
-            Submit
-          </Button>
+          <h3>Create Workout</h3>
+          <Form>
+            <FormGroup>
+              <Label for="Workout">Workout Name</Label>
+              <Input
+                type="text"
+                name="text"
+                id="name"
+                onChange={(event) => {
+                  setWorkoutName(event.target.value);
+                }}
+                value={WorkoutName}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="exampleSelect">Duration</Label>
+              <Input
+                type="text"
+                name="duration"
+                id="duration"
+                onChange={(event) => setDuration(event.target.value)}
+                value={duration}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleSelect">Workout Reference</Label>
+              <Input
+                type="text"
+                name="duration"
+                id="duration"
+                onChange={(event) => setReference(event.target.value)}
+                value={reference}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="exampleText">Workout description</Label>
+              <Input
+                type="textarea"
+                name="text"
+                id="exampleText"
+                onChange={(event) => {
+                  setDescription(event.target.value);
+                }}
+                value={Description}
+              />
+            </FormGroup>
+          </Form>
+          <div>
+            {days.map((day) => {
+              return (
+                <Day day={day} key={day} AddDay={AddDay} value={daysDB[day]} />
+              );
+            })}
+            {/*<Button onClick={() => setPhase(2)}>Next</Button>*/}
+            <Button
+              color="success"
+              onClick={() => {
+                submit();
+              }}
+            >
+              Submit
+            </Button>
+          </div>
         </div>
       </div>
     );

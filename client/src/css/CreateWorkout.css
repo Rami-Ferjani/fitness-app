@@ -1,0 +1,11 @@
+.scroll{
+    overflow-y: scroll;
+    height:450px;
+    background-color: #fff;
+    padding:10px;
+    border-radius: 20px;
+   
+    -webkit-box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
+box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
+}
