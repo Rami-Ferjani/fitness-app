@@ -20,15 +20,20 @@ const SideBar = ({ isOpen, toggle }) => {
          
           <NavItem>
             <NavLink tag={Link} to={"/about"}>
-              About
+              Workout
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>Portfolio</NavLink>
+            <NavLink>Program</NavLink>
           </NavItem>
           <NavItem>
             <NavLink tag={Link} to={"faq"}>
-              FAQ
+              Chat
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={Link} to={"faq"}>
+              Leaderboard
             </NavLink>
           </NavItem>
           <NavItem>

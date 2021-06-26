@@ -30,25 +30,18 @@ function Topbar({ toggleSidebar }) {
         <NavbarToggler onClick={toggleTopbar} />
         <Collapse isOpen={topbarIsOpen} navbar>
           <Nav className="mr-auto nav-center" navbar>
+            {" "}
             <NavItem>
-              <NavLink tag={Link} to={"/Page-1"}>
-                Workout
-              </NavLink>
+              <NavLink tag={Link} to={"/Page-1"}></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/Program"}>
-                Program
-              </NavLink>
+              <NavLink tag={Link} to={"/Program"}></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/page-3"}>
-                chat
-              </NavLink>
+              <NavLink tag={Link} to={"/page-3"}></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/LeaderBoard"}>
-                Leaderboard
-              </NavLink>
+              <NavLink tag={Link} to={"/LeaderBoard"}></NavLink>
             </NavItem>
           </Nav>
 

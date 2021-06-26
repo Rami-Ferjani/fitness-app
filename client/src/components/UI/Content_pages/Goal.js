@@ -22,7 +22,7 @@ const Example = (props) => {
   const [ErrorMsg, setErrorMsg] = useState("");
   const [SuccessMsg, setSuccessMsg] = useState("");
   const handleSubmit = (e) => {
-    const date=Date.now();
+    const date = Date.now();
     e.preventDefault();
     let g, a, s, t, p;
     if (Goal === "Build Muscle") g = 10000;
@@ -40,7 +40,10 @@ const Example = (props) => {
     else if (Time === "between 3 and 6 hours per week") t = 20;
     else if (Time === "More than 6 hours per week") t = 30;
     const ref = g + a + s + t + p;
-    const body = JSON.stringify({ workoutref: `${ref}`,startingDate:`${date}` });
+    const body = JSON.stringify({
+      workoutref: `${ref}`,
+      startingDate: `${date}`,
+    });
     const config = {
       headers: {
         "content-Type": "application/json",

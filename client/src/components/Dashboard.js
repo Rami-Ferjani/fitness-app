@@ -17,7 +17,7 @@ export const Dashboard = (props) => {
   if (1) {
     return (
       <div className="App wrapper">
-        <AdminSideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+        <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
         <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
       </div>
     );

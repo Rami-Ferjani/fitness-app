@@ -55,7 +55,7 @@ router.post("/", (req, res) => {
               workout: person.workout,
               day: person.day,
               workoutref: person.workoutref,
-              startingDate:person.startingdate,
+              startingDate: person.startingDate,
             },
           });
         }
