@@ -14,10 +14,10 @@ export const Dashboard = (props) => {
   let auth = state.auth.isAuthenticated;
   let admin;
   if (auth) admin = state1.auth.person.admin;
-  if (1) {
+  if (admin) {
     return (
       <div className="App wrapper">
-        <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+        <AdminSideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
         <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
       </div>
     );

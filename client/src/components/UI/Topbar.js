@@ -32,16 +32,24 @@ function Topbar({ toggleSidebar }) {
           <Nav className="mr-auto nav-center" navbar>
             {" "}
             <NavItem>
-              <NavLink tag={Link} to={"/Page-1"}></NavLink>
+              <NavLink tag={Link} to={"/Page-1"}>
+                Workout
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/Program"}></NavLink>
+              <NavLink tag={Link} to={"/Program"}>
+                Program
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/page-3"}></NavLink>
+              <NavLink tag={Link} to={"/page-3"}>
+                Chat
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/LeaderBoard"}></NavLink>
+              <NavLink tag={Link} to={"/LeaderBoard"}>
+                LeaderBOard
+              </NavLink>
             </NavItem>
           </Nav>
 
