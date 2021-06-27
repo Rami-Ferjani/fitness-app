@@ -23,19 +23,19 @@ function Workout(props) {
     axios
       .get(`/api/workout/${state.auth.person.workoutref}`)
       .then((res) => {
-        console.log(res);
-        setWorkoutData(res.data.payload.daysDB);
+        setWorkoutData(res.data.daysDB);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
   // const workoutData = state.workout.payload.daysDB;
-  currentWorkout = workoutData[day];
-  let currentWorkout;
+  let currentWorkout; /*= workoutData[day];*/
+  //let currentWorkout;
   if (day != "0") {
     currentWorkout = workoutData[2];
   }
+  console.log(currentWorkout);
   currentWorkout = [
     { name: "Push up", Sets: "10", Reps: "20" },
     { name: "Chin  up", Sets: "10", Reps: "20" },
