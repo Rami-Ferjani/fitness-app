@@ -8,31 +8,39 @@ import moment from "moment";
 function Workout(props) {
   const [workoutReady, setworkoutReady] = useState(false);
   const state = useSelector((state) => state);
-
+  const [currentWorkout, setCurrentWorkout] = useState([
+    { name: "Exercice 1", Sets: "10", Reps: "20" },
+    { name: "Exercice 2", Sets: "10", Reps: "20" },
+    { name: "Exercice 3", Sets: "10", Reps: "20" },
+  ]);
   const workoutName = state.auth.person.workout;
-  const day = "1";
-  const c = moment(state.auth.person.startDate).format();
-  console.log("c:" + c);
-  const month = state.auth.person.startDate;
-  console.log("month" + month);
+  const [workoutLength, setWorkoutLengh] = useState(0);
 
-  const days = moment().diff(c);
-  console.log(days);
+  console.log(state.auth.person.startingDate);
+  const date = new Date(state.auth.person.startingDate);
+  let day = moment().diff(date, "days");
+
+  //const days = moment().diff(c);
+
   const [workoutData, setWorkoutData] = useState([]);
   useEffect(() => {
     axios
       .get(`/api/workout/${state.auth.person.workoutref}`)
       .then((res) => {
         setWorkoutData(res.data.daysDB);
+        if (day != "0") {
+          setCurrentWorkout(res.data.daysDB[day]);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+  console.log(workoutData.length);
   // const workoutData = state.workout.payload.daysDB;
-  let currentWorkout; /*= workoutData[day];*/
+  // let currentWorkout; /*= workoutData[day];*/
   //let currentWorkout;
-  if (day != "0") {
+  /*if (day != "0") {
     currentWorkout = workoutData[2];
   }
   console.log(currentWorkout);
@@ -40,15 +48,21 @@ function Workout(props) {
     { name: "Push up", Sets: "10", Reps: "20" },
     { name: "Chin  up", Sets: "10", Reps: "20" },
     { name: "Squats", Sets: "10", Reps: "20" },
-  ];
-  console.log(`i am the data :${workoutData}`);
+  ];*/
+  //console.log(`i am the data :${workoutData}`);
   const [paragraph, setParagraph] = useState("");
   const [everything, setEverything] = useState([]);
   // const [currentLink, setcurrentLink] = useState("");
   //setcurrentLink("https://www.youtube.com/watch?v=mGvzVjuY8SY");
   const currentLink = "https://www.youtube.com/watch?v=brhRXlOhsAM";
 
-  if (day == "0") {
+  if (state.auth.person.workoutref === null) {
+    return (
+      <div className="scroll">
+        <h3>Please go and set your program conditions</h3>
+      </div>
+    );
+  } else if (day == "0") {
     return (
       <div className="scroll">
         {" "}
