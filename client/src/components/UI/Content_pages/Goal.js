@@ -50,7 +50,7 @@ const Example = (props) => {
       },
     };
     axios
-      .put(`/api/persons/${person.id}`, body, config)
+      .put(`/api/persons/${person._id}`, body, config)
       .then((res) => {
         console.log(res.data);
         setSuccessMsg("Your program was updated");

@@ -7,6 +7,10 @@ const PersonSchema = new Schema({
     type: String,
     required: true,
   },
+  lastName: {
+    type: String,
+    default: null,
+  },
   password: {
     type: String,
     required: true,
@@ -18,7 +22,7 @@ const PersonSchema = new Schema({
   },
   admin: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   workout: {
     type: String,
@@ -34,6 +38,22 @@ const PersonSchema = new Schema({
   },
   startingDate: {
     type: Date,
+    default: null,
+  },
+  weight: {
+    type: String,
+    default: null,
+  },
+  description: {
+    type: String,
+    default: null,
+  },
+  sexe: {
+    type: String,
+    default: null,
+  },
+  imgLink: {
+    type: String,
     default: null,
   },
 });

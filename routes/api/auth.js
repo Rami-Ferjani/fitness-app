@@ -56,6 +56,10 @@ router.post("/", (req, res) => {
               day: person.day,
               workoutref: person.workoutref,
               startingDate: person.startingDate,
+              weight: person.weight,
+              imgLink: person.imgLink,
+              description: person.description,
+              sexe: person.sexe,
             },
           });
         }
