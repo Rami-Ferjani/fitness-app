@@ -15,7 +15,7 @@ const ChatModel = require("../../models/ChatModel");
 //@access   pubic
 
 router.post("/", (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, lastname, email, password, workoutref } = req.body;
 
   //simple validation
   if (!name || !email || !password) {
@@ -30,9 +30,11 @@ router.post("/", (req, res) => {
     //if user doesn't exists
     const newPerson = new person({
       name,
+      lastname,
       email,
       password,
       admin: false,
+      workoutref,
     });
 
     //Create salt n hash to has passwors
@@ -56,9 +58,12 @@ router.post("/", (req, res) => {
                 token,
                 person: {
                   id: person.id,
+
                   name: person.name,
+                  lastname: person.lastname,
                   email: person.email,
                   admin: person.admin,
+                  workoutref: person.workoutref,
                 },
               });
             }

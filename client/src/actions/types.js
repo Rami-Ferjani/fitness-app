@@ -9,5 +9,6 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const CREATE_WORKOUT="CREATE_WORKOUT";
+export const UPDATE_REF="UPDATE_REF";
 export const ADD_DAY="ADD_DAY";
 export const WORKOUT_LOADED="WORKOUT_LOADED";

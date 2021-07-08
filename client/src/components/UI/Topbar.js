@@ -31,29 +31,23 @@ function Topbar({ toggleSidebar }) {
         <Collapse isOpen={topbarIsOpen} navbar>
           <Nav className="mr-auto nav-center" navbar>
             {" "}
-            <NavItem>
-              <NavLink tag={Link} to={"/Page-1"}>
-                Workout
-              </NavLink>
+            {/*<NavItem>
+              <NavLink tag={Link} to={"/Page-1"}></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/Program"}>
-                Program
-              </NavLink>
+              <NavLink tag={Link} to={"/Program"}></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/page-3"}>
-                Chat
-              </NavLink>
+              <NavLink tag={Link} to={"/page-3"}></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to={"/LeaderBoard"}>
-                LeaderBOard
-              </NavLink>
-            </NavItem>
+              <NavLink tag={Link} to={"/LeaderBoard"}></NavLink>
+            </NavItem>*/}
           </Nav>
 
-          <NavbarText>{/*<p>{state.auth.person.name}</p>*/}</NavbarText>
+          <NavbarText>
+            <p>{state.auth.person.name}</p>
+          </NavbarText>
         </Collapse>
       </Navbar>
     </div>

@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Alert,
+} from "reactstrap";
 import "../../../css/CreateWorkout.css";
 import Day from "./Day";
 import { createWorkout } from "../../../actions/workoutActions";
@@ -14,6 +22,8 @@ function CreateWorkout(props) {
   const [reference, setReference] = useState("");
   const [workout, setWorkout] = useState({});
   const [daysDB, setDaysDB] = useState([]);
+  const [ErrorMsg, setErrorMsg] = useState("");
+  const [SuccessMsg, setSuccessMsg] = useState("");
   const dispatch = useDispatch();
 
   const AddDay = (day, ExercicesDB) => {
@@ -38,8 +48,12 @@ function CreateWorkout(props) {
     });
     axios
       .post("/api/workout", body, config)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        setSuccessMsg("Your workout has been created");
+      })
       .catch((err) => {
+        setErrorMsg("an error has occured");
         console.log(err);
       });
   };
@@ -60,6 +74,8 @@ function CreateWorkout(props) {
   if (phase == 1) {
     return (
       <div className="scroll">
+        {ErrorMsg ? <Alert color="danger">{ErrorMsg}</Alert> : null}
+        {SuccessMsg ? <Alert color="success">{SuccessMsg}</Alert> : null}
         <div>
           <h3>Create Workout</h3>
           <Form>

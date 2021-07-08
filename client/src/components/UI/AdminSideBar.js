@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { NavItem, NavLink, Nav } from "reactstrap";
+import { useSelector } from "react-redux";
 import classNames from "classnames";
 //import {Link} from "react-router-dom";
 import "../../css/SideBar.css";
 import Logout from "../auth/Logout";
 import { BsBrightnessHighFill } from "react-icons/bs";
 const AdminSideBar = ({ isOpen, toggle }) => {
+  const state = useSelector((state) => state);
   return (
     <div className={classNames("sidebar", { "is-open": isOpen })}>
       <div className="sidebar-header">
@@ -22,7 +24,11 @@ const AdminSideBar = ({ isOpen, toggle }) => {
           <NavItem>
             <img
               className="profile_image"
-              src="https://i.imgur.com/YvxQ7EW.jpeg"
+              src={
+                state.auth.person.imgLink
+                  ? state.auth.person.imgLink
+                  : "https://www.web2present.com/wp-content/uploads/2017/02/no-avatar-350x350.jpg"
+              }
             ></img>
           </NavItem>
           <NavItem style={{ textDecoration: "none" }}>

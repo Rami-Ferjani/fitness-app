@@ -60,6 +60,7 @@ router.post("/", (req, res) => {
               imgLink: person.imgLink,
               description: person.description,
               sexe: person.sexe,
+              lastname: person.lastname,
             },
           });
         }

@@ -39,9 +39,9 @@ const ManageWorkouts = () => {
           {List.map((item, i) => (
             <tr>
               <td>{i}</td>
-              <td>{item.name}</td>
+              <td>{item.WorkoutName}</td>
               <td>{item.Workoutref}</td>
-              <td>20</td>
+              <td>{item.daysDB.length}</td>
               <td>
                 <Button color="danger" onClick={() => handleClick(item)}>
                   Delete

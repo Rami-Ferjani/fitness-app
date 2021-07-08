@@ -44,6 +44,8 @@
 }
 
 .chatBoxWrapper{
+    overflow-y: overflow;
+    height:400px;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -63,4 +65,18 @@
     color:rgb(224,220,220);
     text-decoration: center;
     cursor: default;
+}
+.scroll{
+    overflow-y: scroll;
+    height:450px;
+    background-color: #fff;
+    padding:10px;
+    border-radius: 20px;
+   
+    -webkit-box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
+box-shadow: 7px 9px 33px 0px rgba(0,0,0,0.75);
+}
+.overflow{
+    overflow-y:scroll;
 }

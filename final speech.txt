@@ -1,0 +1,91 @@
+good morning mr president and members of the jury before we begin i'd like to thank you for agreeing to judge our work, 
+my name is rami Ferjani and it’s my honor to present you my end of studies project which consists of designing and developing 
+ a web application for the management of fitness activities developed within th Mega-DEV company
+
+In order to illustrate our work well, we have chosen to follow the following plan:
+First of all, we will present the general context of the project
+Then we will move on to the study of the existing and proposed solution
+Thirdly, we will  discurss the specifications 
+Afterwards, we will present the conception,
+Followed by an overview of the realization of our project
+And finally , we will finish by taking a look at the conclusion and perspectives
+
+Starting with the General Context
+
+Within the general context, we ill begin by a presentation of the host company,followed by the motivation and problematic
+
+We passed the internship within the Mega-Dev agency which is based in Djerba Houmet-souk, among its services we mention  
+web/mobile development as well as software Solutions and digital Marketing.
+
+Working out from home is becoming more and more popular, as more people tend to choose it over going to the gym which can save money and time , 
+
+But in the same time,it can be difficult to figure out what you need to do on your own as well as it’s easy to 
+lose motivation and get discourged since the comfort of our home doesn’t provid the  same motivation the gym enviroment does,
+such as seeing other people exercicing can give a boost in motivation
+
+So the proposed solution was to create a web application that allows its users to workout from home that takes into account various 
+conditins as well as connect users with each other in order for them to stay motivated.
+
+Now we move on to the study of the existing and proposed solution
+
+After an indepth research, we have found three web applications that respond to our problematic:
+ Fitness Blender, Bodybuilding sixpacksixweek, after that  I will present our proposed solution
+
+Fitness Blender is a fitness platform that offers full-length workout videos, workout programs, and diet and meal plans. 
+
+Orginaly it was an online retailer of sport supplements,  but now  it has become a great resource for workout plans created by experts
+
+6weeksixpack is a website that offers a fitness challenge, it gives daily instruction but it doesn’t specify workout for specific users, and it doesn’t connect users with each other
+
+This is the table that contains the comparison of existing applications according to these criteria: Design, user experince, Full body and home workouts,  interaction between users etc..
+
+
+Now our proposed solution is a web application that allowed users to :
+  -receive workout program based on certain conditions
+  -to connect with other users to stay motivated
+  -to create workouts ith daily instructions
+   -to manage users and workouts effectively
+
+After finishing the general context,we will move on to specifications…
+
+The specifications will be divided to three parts:
+ -system actors
+ -functional needs
+  -geneal use case diagram
+
+Our system will have two actos:
+-the user and the administrator
+
+The user will be able to:
+Register
+Authenticate
+Consult workout
+Chat with other uses
+Create support group
+And finaly manage goals and settings
+
+The adminstator will be able to manage workouts and users
+
+To better understand  the fonctional neds, we presen the general use case diagram
+
+In the following, we present the conception
+
+In this section , we will present the Class diagram and the authentication sequence diagram
+
+Moving on ,this the class diagram of our application
+
+And now we move on to the authenticaion sequence diagram
+
+Moving on to the realisation ,in which will start by presenting the technologies followed by a demonstration of the accomplished work
+
+Moving on to the demonstration
+
+And now we finish our presentation with the conclusion and perspectives.
+
+The planet fitness application will allow its users to receive a fitness program that : meets their goals takes into consideratino multiple factors like users age gender
+And connect user with each other as well as allow the admin to easily manage the users and workouts
+
+
+In case we decided to continue workon on this project, theres more that can be added such a mobile version, a home feed where theres more interaction between users, video chat functionalite, a forum for question and nutrition and diets guides
+
+I would like to thank you all for your attention. And feel free to ask any questions

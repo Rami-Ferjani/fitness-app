@@ -16,13 +16,15 @@ import axios from "axios";
 const Profile = (props) => {
   const state = useSelector((state) => state);
   const person = state.auth.person;
+  const id = person.id;
+  console.log(id);
   const name = state.auth.person.name;
   const email = state.auth.person.email;
   const [Name, setName] = useState(name);
-  const [lastName, setLastName] = useState(person.lastName);
+  const [lastName, setLastName] = useState(person.lastname);
   const [Email, setEmail] = useState(person.email);
   const [Sexe, setSexe] = useState(person.sexe);
-  const [Weight, setWeight] = useState(person.weight);
+  const [weight, setWeight] = useState(person.weight);
   const [description, setDescription] = useState(person.description);
   const [ImgLink, setImgLink] = useState(person.imgLink);
   const [ErrorMsg, setErrorMsg] = useState("");
@@ -31,10 +33,10 @@ const Profile = (props) => {
     e.preventDefault();
     const body = JSON.stringify({
       name: `${Name}`,
-      lastName: `${lastName}`,
+      lastname: `${lastName}`,
       sexe: `${Sexe}`,
       email: `${Email}`,
-      weight: `${Weight}`,
+      weight: `${weight}`,
       description: `${description}`,
       imgLink: `${ImgLink}`,
     });
@@ -44,7 +46,7 @@ const Profile = (props) => {
       },
     };
     axios
-      .put(`/api/persons/${person._id}`, body, config)
+      .put(`/api/persons/${id}`, body, config)
       .then((res) => {
         console.log(res.data);
         setSuccessMsg("Your Profile was updated");
@@ -65,10 +67,10 @@ const Profile = (props) => {
               <Label for="exampleEmail">Name</Label>
               <Input
                 type="Text"
-                name="Name"
+                name="name"
                 id="exampleEmail"
                 placeholder="Name"
-                value={name}
+                value={Name}
                 onChange={(event) => setName(event.target.value)}
               />
             </FormGroup>
@@ -78,7 +80,7 @@ const Profile = (props) => {
               <Label for="exampleEmail">Last Name</Label>
               <Input
                 type="Text"
-                name="LastName"
+                name="lastname"
                 id="exampleEmail"
                 placeholder="Last Name"
                 value={lastName}
@@ -96,7 +98,7 @@ const Profile = (props) => {
                 name="email"
                 id="exampleEmail"
                 placeholder="Email"
-                value={email}
+                value={Email}
                 onChange={(event) => setEmail(event.target.value)}
               />
             </FormGroup>
@@ -105,10 +107,11 @@ const Profile = (props) => {
             <FormGroup>
               <Label for="examplePassword">Weight</Label>
               <Input
-                type="password"
+                type="text"
                 name="password"
                 id="examplePassword"
                 placeholder="Weight"
+                value={weight}
                 onChange={(event) => setWeight(event.target.value)}
               />
             </FormGroup>
@@ -142,6 +145,7 @@ const Profile = (props) => {
             type="Text"
             name="ImgLink"
             id="exampleSelect"
+            value={ImgLink}
             onChange={(event) => setImgLink(event.target.value)}
           ></Input>
         </FormGroup>

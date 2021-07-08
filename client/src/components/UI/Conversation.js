@@ -3,7 +3,7 @@ import "../../css/Conversation.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function Conversation({ conversation, currentUser, groupChat }) {
+function Conversation({ conversation, currentUser, groupChat,ImgLink }) {
   const [User, setUser] = useState({});
   const [Name, setName] = useState("");
   useEffect(() => {

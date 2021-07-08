@@ -59,7 +59,10 @@ function Workout(props) {
   if (state.auth.person.workoutref === null) {
     return (
       <div className="scroll">
-        <h3>Please go and set your program conditions</h3>
+        <h3>
+          Welcome to PLanet Fitness,Please go and set your program conditions to
+          receive a fitness program
+        </h3>
       </div>
     );
   } else if (day == "0") {
@@ -67,11 +70,12 @@ function Workout(props) {
       <div className="scroll">
         {" "}
         <h1>Welcome to day 0</h1>
+        <h4>Strech a little today, and tomorow we begin</h4>
       </div>
     );
   } else
     return (
-      <div className="scroll">
+      <div className="scroll" key="1">
         <h1>Welcom to day {props.day}</h1>
         <div className="second">
           <p className="paragraph">{paragraph}</p>

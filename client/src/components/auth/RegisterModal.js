@@ -19,8 +19,10 @@ class RegisterModal extends Component {
   state = {
     modal: false,
     name: "",
+    lastname:"",
     email: "",
     password: "",
+    workoutref: null,
     msg: null, //for errors
   };
   static PropTypes = {
@@ -61,12 +63,14 @@ class RegisterModal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { name, email, password } = this.state;
+    const { name, email, password, workoutref,lastname } = this.state;
     //Create user obect
     const newUser = {
       name,
+      lastname,
       email,
       password,
+      workoutref,
     };
 
     //attempt to register
@@ -97,10 +101,10 @@ class RegisterModal extends Component {
                   className="mb-3"
                   onChange={this.onChange}
                 />
-                  <Label for="name">Last name</Label>
+                <Label for="name">Last name</Label>
                 <Input
                   type="text"
-                  name="name"
+                  name="lastname"
                   id="name"
                   placeholder="name"
                   className="mb-3"

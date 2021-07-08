@@ -11,6 +11,9 @@ import {
   FormText,
   Alert,
 } from "reactstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { updateRef } from "../../../actions/authActions";
 import { LOGIN_SUCCESS } from "../../../actions/types";
 const Example = (props) => {
   const [Goal, setGoal] = useState("");
@@ -19,6 +22,8 @@ const Example = (props) => {
   const [Time, setTime] = useState("");
   const [Place, setPlace] = useState("");
   const person = useSelector((state) => state.auth.person);
+  const id = person.id;
+  console.log(id);
   const [ErrorMsg, setErrorMsg] = useState("");
   const [SuccessMsg, setSuccessMsg] = useState("");
   const handleSubmit = (e) => {
@@ -50,7 +55,7 @@ const Example = (props) => {
       },
     };
     axios
-      .put(`/api/persons/${person._id}`, body, config)
+      .put(`/api/persons/${id}`, body, config)
       .then((res) => {
         console.log(res.data);
         setSuccessMsg("Your program was updated");

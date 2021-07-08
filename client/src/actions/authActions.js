@@ -43,7 +43,7 @@ export const loadUser = () => (dispatch, getState) => {
 
 //Register user
 export const register =
-  ({ name, email, password }) =>
+  ({ name,lastname, email, password,workoutref }) =>
   (dispatch) => {
     const config = {
       headers: {
@@ -52,7 +52,7 @@ export const register =
     };
 
     //request body
-    const body = JSON.stringify({ name, email, password });
+    const body = JSON.stringify({ name,lastname, email, password,workoutref });
 
     axios
       .post("/api/persons", body, config)
@@ -136,3 +136,44 @@ export const tokenConfig = (getState) => {
   }
   return config;
 };
+
+//update
+/*export const updateRef =
+  ({ workoutref,id }) =>
+  (dispatch) => {
+    const config = {
+      headers: {
+        "content-Type": "application/json",
+      },
+    };
+
+    //request body
+    const body = JSON.stringify({ workoutref });
+    axios
+      .put(`/api/persons/${id}`, body, config)
+      .then((res) => {
+        console.log(res.data);
+        //setSuccessMsg("Your program was updated");
+      })
+      .catch((err) => {
+        console.log(err);
+        //setErrorMsg("something went wrong ,please try againt");
+      });
+
+    axios
+      .post("/api/persons", body, config)
+      .then((res) =>
+        dispatch({
+          type: REGISTER_SUCCESS,
+          payload: res.data,
+        })
+      )
+      .catch((err) => {
+        dispatch(
+          returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
+        );
+        dispatch({
+          type: REGISTER_FAIL,
+        });
+      });
+  };*/

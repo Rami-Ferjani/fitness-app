@@ -123,7 +123,6 @@ function Messenger() {
     }
   };
   useEffect(() => {
-    console.log("7");
     return () => {
       if (scrollRef.current) {
         scrollRef.current.scrollIntoView({ behavior: "smooth" });
@@ -210,8 +209,8 @@ function Messenger() {
   };
 
   return (
-    <div className="messenger">
-      <div className="chatMenu">
+    <div className="messenger scroll">
+      <div className="chatMenu overflow">
         <div className="chatMenuWrapper">
           <Form onSubmit={handleSubmit2}>
             <FormGroup>
@@ -246,13 +245,17 @@ function Messenger() {
           ))}
           {Conversations.map((conversation) => (
             <div onClick={() => setCurrentChat(conversation)}>
-              <Conversation conversation={conversation} currentUser={User} />
+              <Conversation
+                conversation={conversation}
+                currentUser={User}
+                img={conversation.ImgLink}
+              />
             </div>
           ))}
         </div>
       </div>
       <div className="chatBox">
-        <div className="chatBoxWrapper">
+        <div className="chatBoxWrapper overflow">
           {currentChat ? (
             <div>
               <div className="chatBoxTop">

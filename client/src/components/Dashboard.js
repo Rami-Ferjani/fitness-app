@@ -5,6 +5,7 @@ import AdminSideBar from "./UI/AdminSideBar";
 import { Nav, NavItem, NavLink } from "reactstrap";
 import "../css/Dashboard.css";
 import Content from "./UI/Content";
+import AdminContent from "./UI/AdminContent";
 
 export const Dashboard = (props) => {
   const state = useSelector((state) => state);
@@ -13,12 +14,17 @@ export const Dashboard = (props) => {
   let state1 = useSelector((st) => st);
   let auth = state.auth.isAuthenticated;
   let admin;
+  let loading=state1.auth.isLoading;
   if (auth) admin = state1.auth.person.admin;
+  
   if (admin) {
     return (
       <div className="App wrapper">
         <AdminSideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
-        <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
+        <AdminContent
+          toggleSidebar={toggleSidebar}
+          sidebarIsOpen={sidebarIsOpen}
+        />
       </div>
     );
   } else {
